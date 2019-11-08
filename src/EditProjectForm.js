@@ -4,7 +4,7 @@ export default class EditProjectForm extends Component {
     render() {
         return (
             <div style={{border: "1px red solid"}}>
-                PROJECTFORM
+                Edit PROJECTFORM
             </div>
         )
     }
