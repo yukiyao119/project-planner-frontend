@@ -10,7 +10,7 @@ export default class ProjectList extends Component {
 
         return (
             <div style={{border: '1px pink solid'}}>
-                Project Name: 
+                <h2>Project List: </h2>
                 <br />
                 <h2>
                 {projectsItem}
