@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
-import { log } from 'util';
+// import { log } from 'util';
 
 export default class BodyContainer extends Component {
 
@@ -27,11 +27,25 @@ export default class BodyContainer extends Component {
     }
 
     addToAll = (createdProject) => {
-        console.log("adding");
-        
-        // this.setState({
-        //     projectsArr: [...projectsArr, createdProject]
-        // }, ()=> {console.log(this.state.projectsArr)})
+        // console.log("adding");
+        this.setState({
+            projectsArr: [...this.state.projectsArr, createdProject]
+        })
+    }
+
+    addUpdatedToAll = (updatedProject) => {
+        console.log("adding updatedProject to all, changing selected to updatedProject")
+        const updatedProjectsArr = [...this.state.projectsArr].map(project => {
+            if (project.id === updatedProject.id) {
+                return updatedProject
+            }
+            return project
+        })
+
+        this.setState({
+            projectsArr: updatedProjectsArr,
+            selected: updatedProject
+        }, ()=> {console.log(this.state.projectsArr)})
     }
 
     //PROJECT DONE
@@ -62,16 +76,6 @@ export default class BodyContainer extends Component {
     
     render() {
 
-        console.log("HELLO", this.state)
-        // function that check if selected is empty object
-        Object.prototype.isEmpty = function() {
-            for(let key in this) {
-                if(this.hasOwnProperty(key))
-                    return false;
-            }
-            return true;
-        }
-  
         return (
             <div style={{border: '2px blue solid'}}>
                 <ProjectList 
@@ -88,11 +92,13 @@ export default class BodyContainer extends Component {
                 selected = {this.state.selected}
                 projectsComplete={this.state.projectsComplete}/>
                 
-                {this.state.selected.isEmpty() ?  
+                
+                {Object.keys(this.state.selected).length === 0 ?  
                     null
                     :
                     <ProjectCard 
-                    selected={this.state.selected} 
+                    selected={this.state.selected}
+                    addUpdatedToAll={this.addUpdatedToAll}
                     handleDone={this.handleDone}/>
                 } 
 

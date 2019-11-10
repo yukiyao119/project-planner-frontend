@@ -17,7 +17,7 @@ export default class ProjectForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('form submitted!');
+
         fetch('http://localhost:3000/projects', {
             method: "POST",
             headers: {
@@ -32,9 +32,15 @@ export default class ProjectForm extends Component {
           })
           .then(res => res.json())
           .then(createdProject => {
-              console.log(createdProject);
+            //   console.log(createdProject)
               this.props.addToAll(createdProject)
           })
+
+        this.setState({
+            ...this.state, 
+            name: "",
+            details: ""
+        })
     }
 
 
@@ -46,10 +52,12 @@ export default class ProjectForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                 
                     <input label="Name" placeholder="Project Name" name="name" 
+                    autoComplete="name"
                     value={this.state.name} 
                     onChange={this.handleChange}/>
                     
                     <input label="Details" placeholder="Project Details" name="details" 
+                    autoComplete="details"
                     value={this.state.details} 
                     onChange={this.handleChange}/>
 

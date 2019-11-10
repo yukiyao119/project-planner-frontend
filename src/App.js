@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
+// import logo from './logo.svg';
 import './App.css';
-import LogIn from './LogIn';
+// import LogIn from './LogIn';
 import Nav from './Nav';
 import BodyContainer from './BodyContainer';
 
