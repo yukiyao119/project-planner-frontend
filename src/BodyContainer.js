@@ -40,11 +40,10 @@ export default class BodyContainer extends Component {
     }
 
     addToAll = (createdProject) => {
-        // console.log("adding",createdProject);
-        // console.log("projectsArr", this.state.projectsArr)
         this.setState({
             projectsArr: [...this.state.projectsArr, createdProject]
-        }, ()=> {console.log(this.state.projectsArr)})
+        })
+        // console.log(this.state.projectsArr)
     }
     //ADD TO PROJECT
      
@@ -77,11 +76,6 @@ export default class BodyContainer extends Component {
     
     render() {
 
-        // console.log("HELLO", this.state)
-        // console.log("OBJECT" , Object.prototype)
-        console.log(this.state.selected)
-        
-  
         return (
             <div style={{border: '2px blue solid'}}>
                 <ProjectList 

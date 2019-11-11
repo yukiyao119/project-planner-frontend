@@ -11,7 +11,7 @@ export default class EditProjectForm extends Component {
         this.setState({
             [evt.target.name]: evt.target.value
         })
-        console.log(this.state)
+        // console.log(this.state)
     }
 
     handleSubmit = (e) => {
@@ -31,7 +31,7 @@ export default class EditProjectForm extends Component {
         })
     }
     render() {
-        console.log("edit form", this.props)
+        // console.log("edit form", this.props)
         return (
             <div style={{border: "1px grey solid"}}>
                 <h1>Edit Project</h1>

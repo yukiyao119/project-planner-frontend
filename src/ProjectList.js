@@ -6,7 +6,8 @@ export default class ProjectList extends Component {
     render() {
 
 
-        const projectsItem = this.props.projects.map(project => <li onClick={() => this.props.handleShowCard(project)}>{project.name}</li>)
+        const projectsItem = this.props.projects.map(project => 
+        <li onClick={() => this.props.handleShowCard(project)}>{project.name}</li>)
 
         return (
             <div style={{border: '1px pink solid'}}>
