@@ -4,8 +4,8 @@ import './App.css';
 // import LogIn from './LogIn';
 import Nav from './Nav';
 import BodyContainer from './BodyContainer';
-
-// import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
+import About from './About';
+import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -15,9 +15,15 @@ class App extends React.Component {
 
     return (
       <main >
-        <Nav />
-        <BodyContainer />
       
+        <Nav />
+        
+        <Switch>
+          <Route exact path={'/'} component={BodyContainer} />
+          <Route path={'/about'} component={About} />
+          {/* <Redirect to='/' /> */}
+        </Switch>
+
       </main>
       
       )

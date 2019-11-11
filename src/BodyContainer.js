@@ -7,7 +7,7 @@ import DoneList from './DoneList';
 
 export default class BodyContainer extends Component {
 
-    state ={ 
+    state ={
         projectsArr: [],
         user_id: 1,
         clicked: false,
@@ -26,6 +26,9 @@ export default class BodyContainer extends Component {
         })
     }
 
+
+
+    
     addToAll = (createdProject) => {
         // console.log("adding");
         this.setState({
@@ -68,7 +71,6 @@ export default class BodyContainer extends Component {
     //PROJECT SHOW CARD
     handleShowCard = (project) => {
         this.setState({
-            // clicked: !this.state.clicked,
             selected: project
         })
     }
@@ -77,8 +79,9 @@ export default class BodyContainer extends Component {
     render() {
 
         return (
-            // style={{height: 'auto'}}
+
             <React.Fragment>
+                
                 <div className="ui equal width grid">
                     <div className="eight wide column">
                         <div className="ui segment">
@@ -109,7 +112,7 @@ export default class BodyContainer extends Component {
 
                 </div>
             
-                <div ui fluid container>
+                <div className="ui fluid container">
                 {Object.keys(this.state.selected).length === 0 ?  
                     null
                     :

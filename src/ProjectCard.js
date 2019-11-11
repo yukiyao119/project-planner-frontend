@@ -6,13 +6,18 @@ export default class ProjectCard extends Component {
 
     state = {
         allNotesArr: []
-        // thisProjectNotes = []
     }
 
     addToAllNotes = (createdNote) => {
         this.setState({
             allNotesArr: [...this.state.allNotesArr, createdNote]
         }, ()=> {console.log("all notes array now", this.state.allNotesArr)})
+    }
+    
+    filterProjectNotes = (notes) => {
+        return notes.filter(note => {
+            return note.project.id === this.props.selected.id
+        })
     }
 
     componentDidMount(){
@@ -24,14 +29,15 @@ export default class ProjectCard extends Component {
                 allNotesArr: notesData
             }, ()=> {console.log("all notes arr", this.state.allNotesArr)})
         })
+
+
     }
 
     
     render() {
+
+        console.log(this.props.selected);
         
-        const thisProjectNotes = this.state.allNotesArr.filter(note => { return note.project.id === this.props.selected.id})
-
-
         return (
 
             <div style={cardStyle}>
@@ -54,7 +60,8 @@ export default class ProjectCard extends Component {
 
                 <NoteCard 
                 addToAllNotes={this.addToAllNotes}
-                thisProjectNotes={thisProjectNotes}
+                allNotesArr={this.state.allNotesArr}
+                filterProjectNotes={this.filterProjectNotes}
                 selected={this.props.selected}
                 />
                 

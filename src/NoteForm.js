@@ -5,13 +5,14 @@ export default class NoteForm extends Component {
     state = {
         content: '',
         user_id: 1,
-        project_id: this.props.selected.id
+        project_id: null
     }
 
     handleContentChange = (evt) => {
         this.setState({
-            [evt.target.name]: evt.target.value
-        }, ()=>{console.log(this.state)})
+            content: evt.target.value,
+            project_id: this.props.selected.id
+        }, ()=>{console.log(this.state)} )
     }
 
     handleNoteSubmit = (event) => {
@@ -26,7 +27,7 @@ export default class NoteForm extends Component {
             body: JSON.stringify({
                 content: this.state.content,
                 user_id: this.state.user_id,
-                project_id: this.state.project_id
+                project_id: this.props.selected.id
             })
         })
             .then(res => res.json())
