@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NoteCard from './NoteCard';
-
 import EditProjectForm from './EditProjectForm'
 
 export default class ProjectCard extends Component {
@@ -16,20 +15,32 @@ export default class ProjectCard extends Component {
       })
   }
 
-    componentDidMount(){
-        fetch("http://localhost:3000/notes")
-        .then(res => res.json())
-        .then((notesArray) => {
-            this.setState({
-                notes: notesArray
-            })
-        })
-    }
+    // componentDidMount(){
+    //     fetch("http://localhost:3000/notes")
+    //     .then(res => res.json())
+    //     .then((notesArray) => {
+    //         this.setState({
+    //             notes: notesArray
+    //         })
+    //     })
+    // }
+    // componentDidUpdate(prevProps){
+    //     console.log("prevProps", prevProps)
+    //     console.log("current props", this.props)
+    //     // console.log(this.props.selected.id)
+    //     let id = this.props.selected.id
+    //     fetch(`http://localhost:3000/projects/${id}`)
+    //     .then(res => res.json())
+    //     .then(notesObj => {
+    //         console.log(notesObj)
+    //     })
+    // }
 
 
     render() {
-        console.log("brian wong", this.props.selected)
-        const thisProjectNotes = this.state.notes.filter(note => {return note.project.id === this.props.selected.id})
+        // console.log("brian wong", this.state.notes)
+        console.log("selceted",this.props)
+        // const thisProjectNotes = this.state.notes.filter(note => {return note.project.id === this.props.selected.id})
 
         return (
 
@@ -42,9 +53,9 @@ export default class ProjectCard extends Component {
                 <br />
                 <EditProjectForm selected={this.props.selected} editProject={this.props.editProject}/>
                 <NoteCard selected={this.props.selected} 
-                          notes={this.state.notes} 
+                        //   notes={this.state.notes} 
                           addToNotes={this.addToNotes} 
-                          thisProjectNotes={thisProjectNotes}
+                        //   thisProjectNotes={thisProjectNotes}
                           />
                 <button onClick={()=> this.props.handleDone(this.props.selected)}>Complete</button>
                 

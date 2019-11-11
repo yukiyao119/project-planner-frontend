@@ -10,9 +10,9 @@ export default class BodyContainer extends Component {
     state ={ 
         projectsArr: [],
         user_id: 1,
-        clicked: false,
         selected: {},
-        projectsComplete: []
+        projectsComplete: [],
+        
     }
 
     componentDidMount(){
@@ -35,25 +35,29 @@ export default class BodyContainer extends Component {
         
         this.setState({
             ...this.state,
-            projectsArr: [...newArray, newProject]
+            projectsArr: [...newArray, newProject],
+            selected: newProject
         })
     }
-
+    
+     //ADD TO PROJECT
     addToAll = (createdProject) => {
         this.setState({
             projectsArr: [...this.state.projectsArr, createdProject]
         })
         // console.log(this.state.projectsArr)
     }
-    //ADD TO PROJECT
+    
      
 
     //PROJECT DONE
     handleDone = (project) => {
         // console.log("HELLO", this.state.projectsComplete)
+        console.log(project)
         const projectsComplete = this.state.projectsComplete
         const newProjectsArr = this.state.projectsArr.filter( curProject => {
-            return curProject !== project
+            // console.log(curProject !== project)
+            return curProject.id !== project.id
         })
 
         if (!projectsComplete.includes(project)) {
