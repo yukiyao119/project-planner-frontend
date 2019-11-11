@@ -26,6 +26,6 @@ export default class ProjectList extends Component {
 }
 
 const listStyle = {
-    border: '1px pink solid',
+    // border: '1px pink solid',
     margin: '20px 5px 20px 20px'
 }

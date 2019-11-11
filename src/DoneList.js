@@ -11,7 +11,7 @@ export default class DoneList extends Component {
         
         return (
 
-            <div className="column" style={doneListStyle}>
+            <div style={doneListStyle}>
                 <h2>Completed Project List:</h2>
                 <br />
                 <h2>
@@ -23,7 +23,7 @@ export default class DoneList extends Component {
 }
 
 const doneListStyle = {
-    border: '1px pink solid',
+    // border: '1px pink solid',
     margin: '20px 20px 20px 5px'
     
 }

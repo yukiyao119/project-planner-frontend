@@ -79,41 +79,48 @@ export default class BodyContainer extends Component {
         return (
             // style={{height: 'auto'}}
             <React.Fragment>
-            <div className="columns" >
-                <div className="column is-half">
-                    <ProjectList 
-                    handleShowCard={this.handleShowCard}
-                    projects={this.state.projectsArr}
-                    />
-                </div>
+                <div className="ui equal width grid">
+                    <div className="eight wide column">
+                        <div className="ui segment">
+                            <ProjectList 
+                            handleShowCard={this.handleShowCard}
+                            projects={this.state.projectsArr}
+                            />
+                        </div>
+                    </div>
 
-                <div className="column" style={{height: 'auto'}}>
-                    <ProjectForm 
-                    addToAll={this.addToAll}
-                    />
-                </div>
+                    <div className="four wide column">
+                        <div className="ui segment">
+                            <ProjectForm 
+                            addToAll={this.addToAll}
+                            />
+                        </div>
+                    </div>
 
-                <div className="column" style={{height: 'auto'}}>
-                    <DoneList
-                    handleShowCard={this.handleShowCard}
-                    selected = {this.state.selected}
-                    projectsComplete={this.state.projectsComplete}
-                    />
-                </div>
-            </div>
+                    <div className="four wide column">
+                        <div className="ui segment">
+                            <DoneList
+                            handleShowCard={this.handleShowCard}
+                            selected = {this.state.selected}
+                            projectsComplete={this.state.projectsComplete}
+                            />
+                        </div>
+                    </div>
 
-            <div className="columns">
-            {Object.keys(this.state.selected).length === 0 ?  
-                null
-                :
-                <div className="column" >
-                <ProjectCard 
-                selected={this.state.selected}
-                addUpdatedToAll={this.addUpdatedToAll}
-                handleDone={this.handleDone}/>
                 </div>
-            }
-            </div>
+            
+                <div ui fluid container>
+                {Object.keys(this.state.selected).length === 0 ?  
+                    null
+                    :
+                    <div >
+                    <ProjectCard 
+                    selected={this.state.selected}
+                    addUpdatedToAll={this.addUpdatedToAll}
+                    handleDone={this.handleDone}/>
+                    </div>
+                }
+                </div>
             </React.Fragment>
         )
 

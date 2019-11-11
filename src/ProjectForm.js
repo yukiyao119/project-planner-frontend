@@ -47,7 +47,7 @@ export default class ProjectForm extends Component {
     render() {
 
         return (
-            <div className="column" style={projectFormStyle}>
+            <div style={projectFormStyle}>
                 <h2>New Project Form</h2>
 
                 <div className="tile">
@@ -74,6 +74,6 @@ export default class ProjectForm extends Component {
 }
 
 const projectFormStyle = {
-    border: '1px pink solid',
+    // border: '1px pink solid',
     margin: '20px 5px 20px 5px'
 }

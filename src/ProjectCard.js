@@ -35,7 +35,7 @@ export default class ProjectCard extends Component {
         return (
 
             <div style={cardStyle}>
-                <h2>Im Project Card</h2>
+                <h2>Project Card</h2>
                 <br />
                 <h2>Project Name: {this.props.selected.name}</h2>
                 <br />

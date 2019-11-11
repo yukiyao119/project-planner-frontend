@@ -15,7 +15,7 @@ class App extends React.Component {
 
     return (
       <main >
-        <Nav className="container"/>
+        <Nav />
         <BodyContainer />
       
       </main>
