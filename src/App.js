@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import LogIn from './LogIn';
+// import LogIn from './LogIn';
 import Nav from './Nav';
 import BodyContainer from './BodyContainer';
 
 // import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
 
 
-class App extends React.Component {
+class App extends Component {
 
 
   render(){

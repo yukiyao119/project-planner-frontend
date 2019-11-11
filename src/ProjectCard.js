@@ -4,8 +4,12 @@ import EditProjectForm from './EditProjectForm'
 
 export default class ProjectCard extends Component {
 
+   
+
+  
+
     render() {
-        // console.log("brian wong", this.props)
+        console.log("brian wong", this.props)
         return (
 
             <div style={{border: '2px red solid'}}>
@@ -15,9 +19,10 @@ export default class ProjectCard extends Component {
                 <br />
                 Project Details: {this.props.selected.details}
                 <br />
-                <EditProjectForm />
+                <EditProjectForm selected={this.props.selected} editProject={this.props.editProject}/>
                 <NoteCard />
                 <button onClick={()=> this.props.handleDone(this.props.selected)}>Complete</button>
+                
             </div>
 
         )

@@ -14,10 +14,10 @@ export default class ProjectForm extends Component {
             [evt.target.name]: evt.target.value
         }, ()=>{console.log(this.state)})
     }
-
+    
     handleSubmit = (evt) => {
         evt.preventDefault()
-        console.log('form submitted!');
+        console.log('form submitted!',evt);
         fetch('http://localhost:3000/projects', {
             method: "POST",
             headers: {

@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import NoteForm from './NoteForm.js'
 
 export default class NoteCard extends Component {
+
+state = {
+    note: []
+}
+
+
+
     render() {
         return (
             <div style={{border: '1px red solid'}}>

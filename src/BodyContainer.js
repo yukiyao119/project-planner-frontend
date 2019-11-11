@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
-import { log } from 'util';
+// import { log } from 'util';
 
 export default class BodyContainer extends Component {
 
@@ -25,14 +25,29 @@ export default class BodyContainer extends Component {
             })
         })
     }
+    ///EDIT PROJECT FORM
+    editProjectRender = (newProject) => {
+        const newArray = this.state.projectsArr.filter(project => project.id !== newProject.id)
+        //if this condition is true it will return a new array with the project taken out
+        console.log(this.state.projectsArr)
+        // [1,2,3,4,5] [5]
+        // [1,2,3,4]
+        
+        this.setState({
+            ...this.state,
+            projectsArr: [...newArray, newProject]
+        })
+    }
 
     addToAll = (createdProject) => {
-        console.log("adding");
-        
-        // this.setState({
-        //     projectsArr: [...projectsArr, createdProject]
-        // }, ()=> {console.log(this.state.projectsArr)})
+        // console.log("adding",createdProject);
+        // console.log("projectsArr", this.state.projectsArr)
+        this.setState({
+            projectsArr: [...this.state.projectsArr, createdProject]
+        }, ()=> {console.log(this.state.projectsArr)})
     }
+    //ADD TO PROJECT
+     
 
     //PROJECT DONE
     handleDone = (project) => {
@@ -62,15 +77,10 @@ export default class BodyContainer extends Component {
     
     render() {
 
-        console.log("HELLO", this.state)
-        // function that check if selected is empty object
-        Object.prototype.isEmpty = function() {
-            for(let key in this) {
-                if(this.hasOwnProperty(key))
-                    return false;
-            }
-            return true;
-        }
+        // console.log("HELLO", this.state)
+        // console.log("OBJECT" , Object.prototype)
+        console.log(this.state.selected)
+        
   
         return (
             <div style={{border: '2px blue solid'}}>
@@ -85,13 +95,14 @@ export default class BodyContainer extends Component {
 
                 <DoneList
                 handleShowCard={this.handleShowCard}
-                selected = {this.state.selected}
+                selected={this.state.selected}
                 projectsComplete={this.state.projectsComplete}/>
                 
-                {this.state.selected.isEmpty() ?  
+                {this.state.selected.length === 0 ?  
                     null
                     :
                     <ProjectCard 
+                    editProject={this.editProjectRender}
                     selected={this.state.selected} 
                     handleDone={this.handleDone}/>
                 } 
