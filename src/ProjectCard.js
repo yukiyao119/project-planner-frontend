@@ -34,13 +34,18 @@ export default class ProjectCard extends Component {
 
         return (
 
-            <div style={{border: '2px red solid'}}>
+            <div style={cardStyle}>
                 <h2>Im Project Card</h2>
                 <br />
                 <h2>Project Name: {this.props.selected.name}</h2>
                 <br />
                 Project Details: {this.props.selected.details}
                 <br />
+                <button 
+                    style={btnStyle} 
+                    onClick={()=> this.props.handleDone(this.props.selected)}>
+                        Complete
+                </button>
 
                 <EditProjectForm 
                 selected={this.props.selected}
@@ -52,9 +57,24 @@ export default class ProjectCard extends Component {
                 thisProjectNotes={thisProjectNotes}
                 selected={this.props.selected}
                 />
-                <button onClick={()=> this.props.handleDone(this.props.selected)}>Complete</button>
+                
             </div>
 
         )
     }
+}
+
+const btnStyle = {
+    background: '#99B024',
+    color: '#fff',
+    border: 'none',
+    padding: '5px 9px',
+    // borderRadius: '50%',
+    cursor: 'pointer',
+    // float: 'right'
+}
+
+const cardStyle = {
+    border: '1px red solid',
+    margin: '20px'
 }

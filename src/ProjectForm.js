@@ -45,12 +45,14 @@ export default class ProjectForm extends Component {
 
 
     render() {
+
         return (
-            <div style={{border: '1px pink solid'}}>
-                <h2>Im Project Form</h2>
-                
+            <div className="column" style={projectFormStyle}>
+                <h2>New Project Form</h2>
+
+                <div className="tile">
                 <form onSubmit={this.handleSubmit}>
-                
+
                     <input label="Name" placeholder="Project Name" name="name" 
                     autoComplete="name"
                     value={this.state.name} 
@@ -64,7 +66,14 @@ export default class ProjectForm extends Component {
                     <button>Submit</button>
                     
                 </form>
+                </div>
+
             </div>
         )
     }
+}
+
+const projectFormStyle = {
+    border: '1px pink solid',
+    margin: '20px 5px 20px 5px'
 }

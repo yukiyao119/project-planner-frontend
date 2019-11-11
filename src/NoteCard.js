@@ -12,7 +12,7 @@ export default class NoteCard extends Component {
 
         return (
             <div style={{border: '1px red solid'}}>
-                <h2>Im A Note Card</h2>
+                <h2>Note board</h2>
                 <ol>
                     {noteItems}
                 </ol>

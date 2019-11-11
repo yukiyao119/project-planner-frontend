@@ -48,7 +48,7 @@ export default class EditProjectForm extends Component {
     render() {
         return (
             <div style={{border: "1px grey solid"}}>
-                <h2>Edit PROJECTFORM</h2>
+                <h2>Edit project form</h2>
                 
                 <form onSubmit={this.handleSubmit}>
                 

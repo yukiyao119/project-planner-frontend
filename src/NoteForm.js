@@ -46,7 +46,7 @@ export default class NoteForm extends Component {
 
         return (
             <div style={{border: "1px green solid"}}>
-                <h3>I'm a new Note form!</h3>
+                <h3>New Note form</h3>
 
                 <form onSubmit={this.handleNoteSubmit}>
                     <input placeholder="Write down your note..." 

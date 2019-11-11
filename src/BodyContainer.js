@@ -50,7 +50,7 @@ export default class BodyContainer extends Component {
 
     //PROJECT DONE
     handleDone = (project) => {
-        // console.log("HELLO", this.state.projectsComplete)
+        
         const projectsComplete = this.state.projectsComplete
         const newProjectsArr = this.state.projectsArr.filter( curProject => {
             return curProject !== project
@@ -77,34 +77,45 @@ export default class BodyContainer extends Component {
     render() {
 
         return (
-            <div style={{border: '2px blue solid'}}>
-                <ProjectList 
-                handleShowCard={this.handleShowCard}
-                projects={this.state.projectsArr}
-                />
+            // style={{height: 'auto'}}
+            <React.Fragment>
+            <div className="columns" >
+                <div className="column is-half">
+                    <ProjectList 
+                    handleShowCard={this.handleShowCard}
+                    projects={this.state.projectsArr}
+                    />
+                </div>
 
-                <ProjectForm 
-                addToAll={this.addToAll}
-                />
+                <div className="column" style={{height: 'auto'}}>
+                    <ProjectForm 
+                    addToAll={this.addToAll}
+                    />
+                </div>
 
-                <DoneList
-                handleShowCard={this.handleShowCard}
-                selected = {this.state.selected}
-                projectsComplete={this.state.projectsComplete}/>
-                
-                
-                {Object.keys(this.state.selected).length === 0 ?  
-                    null
-                    :
-                    <ProjectCard 
-                    selected={this.state.selected}
-                    addUpdatedToAll={this.addUpdatedToAll}
-                    handleDone={this.handleDone}/>
-                } 
-
+                <div className="column" style={{height: 'auto'}}>
+                    <DoneList
+                    handleShowCard={this.handleShowCard}
+                    selected = {this.state.selected}
+                    projectsComplete={this.state.projectsComplete}
+                    />
+                </div>
             </div>
-        )
 
+            <div className="columns">
+            {Object.keys(this.state.selected).length === 0 ?  
+                null
+                :
+                <div className="column" >
+                <ProjectCard 
+                selected={this.state.selected}
+                addUpdatedToAll={this.addUpdatedToAll}
+                handleDone={this.handleDone}/>
+                </div>
+            }
+            </div>
+            </React.Fragment>
+        )
 
     }
 }

@@ -13,7 +13,8 @@ export default class ProjectList extends Component {
             </li>)
 
         return (
-            <div style={{border: '1px pink solid'}}>
+            // 
+            <div className="column" style={listStyle}>
                 <h2>Project List: </h2>
                 <br />
                 <h2>
@@ -22,4 +23,9 @@ export default class ProjectList extends Component {
             </div>
         )
     }
+}
+
+const listStyle = {
+    border: '1px pink solid',
+    margin: '20px 5px 20px 20px'
 }
