@@ -102,6 +102,6 @@ export default class ProjectCard extends Component {
 // }
 
 const cardStyle = {
-    border: '1px red solid',
+    border: '1px pink solid',
     margin: '20px'
 }

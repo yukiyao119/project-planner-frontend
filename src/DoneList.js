@@ -12,8 +12,7 @@ export default class DoneList extends Component {
         return (
 
             <div style={doneListStyle}>
-                <h2>Completed Project List:</h2>
-                <br />
+                <h2 className="ui header purple">Completed Project List:</h2>
                 <h2>
                 {doneItems}
                 </h2>
