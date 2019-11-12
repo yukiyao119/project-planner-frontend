@@ -18,8 +18,7 @@ export default class NoteForm extends Component {
 
     handleNoteSubmit = (event) => {
         event.preventDefault()
-        
-        console.log('handling note submitting')
+        // console.log('handling note submitting')
         fetch('http://localhost:3000/notes', {
             method: 'POST',
             headers: {
@@ -51,10 +50,10 @@ export default class NoteForm extends Component {
                 <h3 className="ui center aligned header purple">Add a new Note</h3>
 
                 <form className="ui form" onSubmit={this.handleNoteSubmit}>
-                    <div className="field">
-                        <input placeholder="Write down your note..." 
+                    <div className="ui field">
+                        <input label="content" placeholder="Write down your note..." 
                         name="content" 
-                        autoComplete="content"
+                        autoComplete="off"
                         value={this.state.content} 
                         onChange={this.handleContentChange}
                         />
