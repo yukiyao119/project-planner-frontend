@@ -5,7 +5,26 @@ import EditProjectForm from './EditProjectForm'
 export default class ProjectCard extends Component {
 
     state = {
-        allNotesArr: []
+        allNotesArr: [],
+        selectedNote: {}
+    }
+
+    handleDelete = (noteObj) => {
+        // console.log("Deleting");
+        fetch(`http://localhost:3000/notes/${noteObj.id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(deletedNote => {
+            // if (deletedNote.ok){
+                const newAllNotes = [...this.state.allNotesArr].filter(note => {
+                    return (note.id !== noteObj.id)
+                })
+                this.setState({
+                    allNotesArr: newAllNotes
+                })
+            // }
+        })
     }
 
     addToAllNotes = (createdNote) => {
@@ -65,6 +84,7 @@ export default class ProjectCard extends Component {
                         <div className="ten wide column">
                             <div className="ui segment">
                             <NoteCard 
+                            handleDelete={this.handleDelete}
                             addToAllNotes={this.addToAllNotes}
                             allNotesArr={this.state.allNotesArr}
                             filterProjectNotes={this.filterProjectNotes}

@@ -9,7 +9,18 @@ export default class NoteCard extends Component {
         const filteredNotes = filterProjectNotes(allNotesArr)
 
         const noteItems = filteredNotes.map(note => 
-            <li className="ui item" key={note.id}> {note.content} </li>)
+        <React.Fragment key={note.id}>
+            <li className="ui item" key={note.id} id={note.id}> 
+                {note.content}   
+                <button key={note.id} id={note.id}
+                className="ui mini icon button"
+                onClick={()=> {this.props.handleDelete(note)}}
+                ><i aria-hidden="true" className="ui delete icon"></i>
+                    {/* Delete this note */}
+                </button>
+            </li>
+            
+        </React.Fragment>)
 
         return (
 
