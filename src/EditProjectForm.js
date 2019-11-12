@@ -44,8 +44,11 @@ export default class EditProjectForm extends Component {
                     value={this.state.details}
                     onChange={this.handleChange}
                     />
+                    
                     <input type='submit' />
+    
                 </form>
+                 
             </div>
         )
     }

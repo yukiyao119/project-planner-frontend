@@ -15,26 +15,6 @@ export default class ProjectCard extends Component {
       })
   }
 
-    // componentDidMount(){
-    //     fetch("http://localhost:3000/notes")
-    //     .then(res => res.json())
-    //     .then((notesArray) => {
-    //         this.setState({
-    //             notes: notesArray
-    //         })
-    //     })
-    // }
-    // componentDidUpdate(prevProps){
-    //     console.log("prevProps", prevProps)
-    //     console.log("current props", this.props)
-    //     // console.log(this.props.selected.id)
-    //     let id = this.props.selected.id
-    //     fetch(`http://localhost:3000/projects/${id}`)
-    //     .then(res => res.json())
-    //     .then(notesObj => {
-    //         console.log(notesObj)
-    //     })
-    // }
 
 
     render() {
@@ -51,7 +31,7 @@ export default class ProjectCard extends Component {
                 <br />
                 Project Details: {this.props.selected.details}
                 <br />
-                <EditProjectForm selected={this.props.selected} editProject={this.props.editProject}/>
+                <EditProjectForm handleYell={this.props.handleYell} selected={this.props.selected} editProject={this.props.editProject}/>
                 <NoteCard selected={this.props.selected} 
                         //   notes={this.state.notes} 
                           addToNotes={this.addToNotes} 

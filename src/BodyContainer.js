@@ -56,7 +56,7 @@ export default class BodyContainer extends Component {
         console.log(project)
         const projectsComplete = this.state.projectsComplete
         const newProjectsArr = this.state.projectsArr.filter( curProject => {
-            // console.log(curProject !== project)
+            console.log(curProject !== project)
             return curProject.id !== project.id
         })
 
@@ -72,11 +72,13 @@ export default class BodyContainer extends Component {
     //PROJECT SHOW CARD
     handleShowCard = (project) => {
         this.setState({
-            // clicked: !this.state.clicked,
+           
             selected: project
         })
     }
 
+
+   
     
     render() {
 
@@ -102,7 +104,10 @@ export default class BodyContainer extends Component {
                     <ProjectCard 
                     editProject={this.editProjectRender}
                     selected={this.state.selected} 
-                    handleDone={this.handleDone}/>
+                    handleDone={this.handleDone}
+                    handleYell={this.handleYell}
+                    />
+                    
                 } 
 
             </div>

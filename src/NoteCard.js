@@ -4,21 +4,30 @@ import NoteForm from './NoteForm.js'
 
 export default class NoteCard extends Component {
 
+    mapNotes = () => {
+        return (
+        <ol>
+         {this.props.selected.notes.map( note => {
+             return <li>{note.content}</li>
+           })}
+       </ol>
+     )
+    }
+
     render() {
     console.log("YUKI", this.props.selected.notes)
-    // const noteItems = this.props.thisProjectNotes.map(note => {
-    //     return <li key={note.id}>
-    //                 {note.content}</li>
-                    
+               
     // })
-    const mapNotes = () => {
-        if (this.props.selected.notes === undefined){
-            return null
-        } else {
-            this.props.selected.notes.map( (notes) => {
-                return <li>{notes}</li>
-            })}
-    }
+    // const mapNotes = () => {
+    //     if (this.props.selected.notes === undefined){
+    //         return null
+    //     } else {
+    //         this.props.selected.notes.map( (notes) => {
+    //             console.log(notes.content)
+    //             return notes.content
+    //         })}
+    // }
+    
     //map is a function that calls the callback
     // map will call on the callback function and pass in the arguement and the callback
     //return and array one at time of the argument. 
@@ -27,9 +36,10 @@ export default class NoteCard extends Component {
         return (
             <div style={{border: '1px red solid'}}>
                 Im A Note Card
-                <ol>{ mapNotes() } 
+                {/* <ol>{ this.mapNotes()} </ol> */}
+                <ol>{ this.props.selected.notes ? this.mapNotes() : " "}</ol>
                 
-                </ol>
+                
                 <NoteForm selected={this.props.selected} 
                         addToNotes={this.props.addToNotes}
                         />
