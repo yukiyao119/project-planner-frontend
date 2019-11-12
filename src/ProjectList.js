@@ -55,15 +55,14 @@ export default class ProjectList extends Component {
 
         return (
             // 
-            <div className="column" style={listStyle}>
-                <div>
+            <div >
+                {/* <div> */}
                     <FilterComponent 
                     handleSearch={this.handleSearch}
                     handleSort={this.handleSort}
                     />
-                </div>
-                <h2>Project List: </h2>
-                <br />
+                {/* </div> */}
+                <h2 className="ui header purple">Project List: </h2>
 
                 <h2>{projectsItem}</h2>
             </div>
@@ -71,7 +70,7 @@ export default class ProjectList extends Component {
     }
 }
 
-const listStyle = {
-    // border: '1px pink solid',
-    margin: '20px 5px 20px 20px'
-}
+// const listStyle = {
+//     // border: '1px pink solid',
+//     margin: '20px 5px 20px 20px'
+// }
