@@ -8,25 +8,18 @@ export default class NoteCard extends Component {
         return (
         <ol>
          {this.props.selected.notes.map( note => {
-             return <li>{note.content}</li>
+             return <li>{note.content}
+                        <button onClick={()=> this.props.deleteNote(note)}>Delete</button>
+                    </li>
            })}
        </ol>
      )
     }
 
     render() {
-    console.log("YUKI", this.props.selected.notes)
+   
                
-    // })
-    // const mapNotes = () => {
-    //     if (this.props.selected.notes === undefined){
-    //         return null
-    //     } else {
-    //         this.props.selected.notes.map( (notes) => {
-    //             console.log(notes.content)
-    //             return notes.content
-    //         })}
-    // }
+   
     
     //map is a function that calls the callback
     // map will call on the callback function and pass in the arguement and the callback
@@ -37,7 +30,7 @@ export default class NoteCard extends Component {
             <div style={{border: '1px red solid'}}>
                 Im A Note Card
                 {/* <ol>{ this.mapNotes()} </ol> */}
-                <ol>{ this.props.selected.notes ? this.mapNotes() : " "}</ol>
+                { this.props.selected.notes ? this.mapNotes() : " "}
                 
                 
                 <NoteForm selected={this.props.selected} 

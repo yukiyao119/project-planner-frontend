@@ -13,7 +13,7 @@ export default class NoteForm extends Component {
         this.setState({
             [evt.target.name]: evt.target.value
         })
-        console.log("handleChangeNotes", this.state)
+        // console.log("handleChangeNotes", this.state)
     }
 
     handleNoteSubmit = (evt) => {

@@ -4,22 +4,8 @@ import EditProjectForm from './EditProjectForm'
 
 export default class ProjectCard extends Component {
 
-   state = {
-       notes: []
-   }
-
-
-  addToNotes = (notes) => {
-      this.setState({
-          notes: [...this.state.notes, notes]
-      })
-  }
-
-
-
     render() {
-        // console.log("brian wong", this.state.notes)
-        console.log("selceted",this.props)
+        console.log(this.props)
         // const thisProjectNotes = this.state.notes.filter(note => {return note.project.id === this.props.selected.id})
 
         return (
@@ -33,9 +19,9 @@ export default class ProjectCard extends Component {
                 <br />
                 <EditProjectForm handleYell={this.props.handleYell} selected={this.props.selected} editProject={this.props.editProject}/>
                 <NoteCard selected={this.props.selected} 
-                        //   notes={this.state.notes} 
-                          addToNotes={this.addToNotes} 
-                        //   thisProjectNotes={thisProjectNotes}
+                        
+                          addToNotes={this.props.addToNotes} 
+                            deleteNote={this.props.deleteNote}
                           />
                 <button onClick={()=> this.props.handleDone(this.props.selected)}>Complete</button>
                 

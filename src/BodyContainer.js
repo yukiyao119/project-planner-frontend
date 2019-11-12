@@ -13,6 +13,7 @@ export default class BodyContainer extends Component {
         selected: {},
         projectsComplete: [],
         
+        
     }
 
     componentDidMount(){
@@ -25,6 +26,8 @@ export default class BodyContainer extends Component {
             })
         })
     }
+
+    
     ///EDIT PROJECT FORM
     editProjectRender = (newProject) => {
         const newArray = this.state.projectsArr.filter(project => project.id !== newProject.id)
@@ -77,11 +80,66 @@ export default class BodyContainer extends Component {
         })
     }
 
+    addToNotes = (newNote) => {
+        
+        const project = this.state.projectsArr.find( (projects) => {
+            return projects.id === newNote.project.id
+        })
 
+        const updateProject = {...project, notes: [...project.notes, newNote]}
+       
+        const newProjectArr = this.state.projectsArr.map((project) => {
+            return project.id === updateProject.id ? updateProject : project
+        })
+        this.setState({
+            projectsArr: newProjectArr,
+            selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
+        })
+    }
+
+    deleteNote = (note) => {
+        console.log("body container", note)
+   
+        fetch(`http://localhost:3000/notes/${note.id}`, {
+            method: "DELETE",
+        })
+        .then(res => res.json())
+        .then( (deletedNote) => {
+            
+            const remainingNotes = this.state.selected.notes.filter( deletedNote => {
+                return note !== deletedNote
+            })
+
+         
+            const project = this.state.projectsArr.find( (projectObj) => {
+                return  deletedNote.project.id === projectObj.id
+            } )
+            //find the project of the deleted note. project.id === project id
+
+            const fitleredNotes = project.notes.filter( (removeNote) => {
+                return removeNote.id !== deletedNote.id
+            })
+            //filter the project notes to remove the deleted note
+            const updatedProject = {...project, notes: fitleredNotes}
+            //make a copy of the updated project
+            const newProjectsArr = this.state.projectsArr.map( (project) => {
+                return project.id === updatedProject.id ? updatedProject : project
+            })
+            //create a new array of projects with updated projects
+
+            this.setState({
+                projectsArr: newProjectsArr,
+                selected: {...this.state.selected, notes: remainingNotes}
+            })
+        }
+        )
+        
+        
+    }
    
     
     render() {
-
+        console.log("what is project id", this.state.projectsArr)
         return (
             <div style={{border: '2px blue solid'}}>
                 <ProjectList 
@@ -105,7 +163,8 @@ export default class BodyContainer extends Component {
                     editProject={this.editProjectRender}
                     selected={this.state.selected} 
                     handleDone={this.handleDone}
-                    handleYell={this.handleYell}
+                    addToNotes={this.addToNotes}
+                    deleteNote={this.deleteNote}
                     />
                     
                 } 
