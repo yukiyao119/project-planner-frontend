@@ -47,24 +47,28 @@ export default class EditProjectForm extends Component {
 
     render() {
         return (
-            <div style={{border: "1px grey solid"}}>
+            <div >
                 <h2>Edit project form</h2>
                 
-                <form onSubmit={this.handleSubmit}>
-                
-                <input label="Name" placeholder="Project Name" name="name" 
-                autoComplete="name"
-                value={this.state.name} 
-                onChange={this.handleChange}/>
-                
-                <input label="Details" placeholder="Project Details" name="details" 
-                autoComplete="details"
-                value={this.state.details} 
-                onChange={this.handleChange}/>
+                <form className="ui form" onSubmit={this.handleSubmit}>
+                <div className="field">
+                    <input label="Name" placeholder="Project Name" name="name" 
+                    autoComplete="name"
+                    value={this.state.name} 
+                    onChange={this.handleChange}/>
+                </div>
 
-                <button>Submit</button>
+                <div className="field">
+                    <textarea placeholder="Tell us more details..." 
+                    autoComplete="details" rows="3"
+                    name="details"
+                    value={this.state.details} 
+                    onChange={this.handleChange}/>
+                </div>
+
+                <button className="ui button">Submit</button>
                 
-            </form>
+                </form>
             </div>
         )
     }

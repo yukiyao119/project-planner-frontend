@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default class Nav extends Component {
 
@@ -16,13 +16,12 @@ export default class Nav extends Component {
                     >
                     HOME
                 </NavLink>
-                |
-                <NavLink 
+                |   <NavLink 
                     to='/about'
                     activeClassName='name-watever-you-want'
                     activeStyle={navLinkStyle}
                     >
-                    ABOUT
+                      ABOUT
                     </NavLink>
             </div>
         )

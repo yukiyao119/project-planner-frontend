@@ -5,14 +5,15 @@ export default class NoteForm extends Component {
     state = {
         content: '',
         user_id: 1,
-        project_id: null
+        // project_id: this.props.selected.id
     }
 
     handleContentChange = (evt) => {
         this.setState({
-            content: evt.target.value,
-            project_id: this.props.selected.id
-        }, ()=>{console.log(this.state)} )
+            [evt.target.name]: evt.target.value
+            // content: evt.target.value,
+            // project_id: this.props.selected.id
+        }, ()=>{console.log(this.state, {selected_id: this.props.selected.id})} )
     }
 
     handleNoteSubmit = (event) => {
@@ -46,17 +47,19 @@ export default class NoteForm extends Component {
     render() {
 
         return (
-            <div style={{border: "1px green solid"}}>
-                <h3>New Note form</h3>
+            <div >
+                <h3 className="ui center aligned header purple">Add a new Note</h3>
 
-                <form onSubmit={this.handleNoteSubmit}>
-                    <input placeholder="Write down your note..." 
-                    name="content" 
-                    autoComplete="content"
-                    value={this.state.content} 
-                    onChange={this.handleContentChange}
-                    />
-                    <button>Submit</button>
+                <form className="ui form" onSubmit={this.handleNoteSubmit}>
+                    <div className="field">
+                        <input placeholder="Write down your note..." 
+                        name="content" 
+                        autoComplete="content"
+                        value={this.state.content} 
+                        onChange={this.handleContentChange}
+                        />
+                    </div>
+                    <button className="ui right button">Submit</button>
                 </form>
             </div>
         )

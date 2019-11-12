@@ -82,7 +82,7 @@ export default class BodyContainer extends Component {
 
             <React.Fragment>
                 
-                <div className="ui equal width grid">
+                <div className="ui padded equal width grid">
                     <div className="eight wide column">
                         <div className="ui segment">
                             <ProjectList 

@@ -40,46 +40,66 @@ export default class ProjectCard extends Component {
         
         return (
 
-            <div style={cardStyle}>
-                <h2>Project Card</h2>
-                <br />
-                <h2>Project Name: {this.props.selected.name}</h2>
-                <br />
-                Project Details: {this.props.selected.details}
-                <br />
-                <button 
-                    style={btnStyle} 
-                    onClick={()=> this.props.handleDone(this.props.selected)}>
-                        Complete
-                </button>
+            <React.Fragment>
+            <div className="ui cards">
+                <div className="ui red fluid card" style={cardStyle}>
 
-                <EditProjectForm 
-                selected={this.props.selected}
-                addUpdatedToAll={this.props.addUpdatedToAll}
-                />
+                    <div className="content">
+                        <h2 className="ui center aligned header purple">Project Card</h2>
+                        <div className="ui header">Project Name: {this.props.selected.name}</div>
+                        <div className="description">Project Details: {this.props.selected.details}</div>
+                    </div>
+                    <div className="extra content">
+                        <div className="ui buttons">
+                            <button className="ui green basic button"
+                                // style={btnStyle} 
+                                onClick={()=> this.props.handleDone(this.props.selected)}>
+                                    Complete
+                            </button>
+                        </div>
+                    </div>
 
-                <NoteCard 
-                addToAllNotes={this.addToAllNotes}
-                allNotesArr={this.state.allNotesArr}
-                filterProjectNotes={this.filterProjectNotes}
-                selected={this.props.selected}
-                />
-                
+                    
+                    <div className="ui padded equal width grid">
+
+                        <div className="ten wide column">
+                            <div className="ui segment">
+                            <NoteCard 
+                            addToAllNotes={this.addToAllNotes}
+                            allNotesArr={this.state.allNotesArr}
+                            filterProjectNotes={this.filterProjectNotes}
+                            selected={this.props.selected}
+                            />
+                            </div>
+                        </div>
+
+                        <div className="five wide column">
+                            <div className="ui segment">
+                            <EditProjectForm 
+                            selected={this.props.selected}
+                            addUpdatedToAll={this.props.addUpdatedToAll}
+                            />
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
+            </React.Fragment>
 
         )
     }
 }
 
-const btnStyle = {
-    background: '#99B024',
-    color: '#fff',
-    border: 'none',
-    padding: '5px 9px',
-    // borderRadius: '50%',
-    cursor: 'pointer',
-    // float: 'right'
-}
+// const btnStyle = {
+//     background: '#99B024',
+//     color: '#fff',
+//     border: 'none',
+//     padding: '5px 9px',
+//     // borderRadius: '50%',
+//     cursor: 'pointer',
+//     // float: 'right'
+// }
 
 const cardStyle = {
     border: '1px red solid',

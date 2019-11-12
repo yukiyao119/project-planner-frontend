@@ -50,23 +50,25 @@ export default class ProjectForm extends Component {
             <div style={projectFormStyle}>
                 <h2>New Project Form</h2>
 
-                <div className="tile">
-                <form onSubmit={this.handleSubmit}>
-
-                    <input label="Name" placeholder="Project Name" name="name" 
-                    autoComplete="name"
-                    value={this.state.name} 
-                    onChange={this.handleChange}/>
-                    
-                    <input label="Details" placeholder="Project Details" name="details" 
-                    autoComplete="details"
-                    value={this.state.details} 
-                    onChange={this.handleChange}/>
-
-                    <button>Submit</button>
+                
+                <form className="ui form" onSubmit={this.handleSubmit}>
+                    <div className="field">
+                        <input label="Name" placeholder="Project Name" name="name" 
+                        autoComplete="name"
+                        value={this.state.name} 
+                        onChange={this.handleChange}/>
+                    </div>
+                    <div className="field">
+                        <textarea placeholder="Tell us more details..." 
+                        autoComplete="details" rows="3"
+                        name="details"
+                        value={this.state.details} 
+                        onChange={this.handleChange}/>
+                    </div>
+                    <button className="ui button">Submit</button>
                     
                 </form>
-                </div>
+                
 
             </div>
         )

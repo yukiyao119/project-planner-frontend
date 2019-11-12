@@ -5,7 +5,7 @@ import './App.css';
 import Nav from './Nav';
 import BodyContainer from './BodyContainer';
 import About from './About';
-import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 
 class App extends React.Component {
