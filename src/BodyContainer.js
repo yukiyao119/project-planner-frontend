@@ -10,7 +10,6 @@ export default class BodyContainer extends Component {
     state ={
         projectsArr: [],
         user_id: 1,
-        clicked: false,
         selected: {},
         projectsComplete: []
     }
@@ -19,16 +18,35 @@ export default class BodyContainer extends Component {
         fetch("http://localhost:3000/projects")
         .then(res => res.json())
         .then( projectsData => {
-            // console.log("PROJECTARRAY", projectsData)
             this.setState({
                 projectsArr: projectsData
             })
         })
     }
 
+    handleReverse = () => {
+        // console.log("Reversing", this.state.selected);
+        const newName = this.state.selected.name.split("").reverse().join("")
+        const newSelected = {
+            ...this.state.selected,
+            name: newName
+            }
+        const newnewProjectsArr = [...this.state.projectsArr].map(project => {
+            // console.log(project, this.state.selected);
+            if(project.id === newSelected.id){
+                return newSelected
+            }
+            return project
+        })
 
-
+        this.setState({
+            selected: newSelected,
+            // { ...this.state.selected, name: newName },
+            projectsArr: newnewProjectsArr
+        }, ()=> {console.log(this.state.selected, this.state.newnewProjectsArr)})
+    }
     
+    // ADD NEW PROJECT TO ALL
     addToAll = (createdProject) => {
         // console.log("adding");
         this.setState({
@@ -36,6 +54,7 @@ export default class BodyContainer extends Component {
         })
     }
 
+    // ADD UPDATED PROJECT TO ALL
     addUpdatedToAll = (updatedProject) => {
         console.log("adding updatedProject to all, changing selected to updatedProject")
         const updatedProjectsArr = [...this.state.projectsArr].map(project => {
@@ -51,7 +70,7 @@ export default class BodyContainer extends Component {
         }, ()=> {console.log(this.state.projectsArr)})
     }
 
-    //PROJECT DONE
+    // MOVE PROJECT TO DONELIST
     handleDone = (project) => {
         
         const projectsComplete = this.state.projectsComplete
@@ -67,8 +86,7 @@ export default class BodyContainer extends Component {
         }
     }
 
-
-    //PROJECT SHOW CARD
+    //CLICK TO SHOW PROJECT CARD
     handleShowCard = (project) => {
         this.setState({
             selected: project
@@ -76,6 +94,7 @@ export default class BodyContainer extends Component {
     }
 
     
+
     render() {
 
         return (
@@ -118,6 +137,7 @@ export default class BodyContainer extends Component {
                     :
                     <div >
                     <ProjectCard 
+                    handleReverse={this.handleReverse}
                     selected={this.state.selected}
                     addUpdatedToAll={this.addUpdatedToAll}
                     handleDone={this.handleDone}/>

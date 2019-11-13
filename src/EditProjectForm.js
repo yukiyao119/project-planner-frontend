@@ -69,6 +69,12 @@ export default class EditProjectForm extends Component {
                 <button className="ui button">Submit</button>
                 
                 </form>
+
+                <button type="button"
+                    className="ui button"
+                    onClick={ this.props.handleReverse}
+                    >Reverse</button>
+
             </div>
         )
     }
