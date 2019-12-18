@@ -6,13 +6,16 @@ export default class NoteCard extends Component {
 
     mapNotes = () => {
         return (
-        <ol>
-         {this.props.selected.notes.map( note => {
-             return <li>{note.content}
-                        <button onClick={()=> this.props.deleteNote(note)}>Delete</button>
-                    </li>
-           })}
-       </ol>
+        <div>
+            <ol>
+            {this.props.selected.notes.map( note => {
+                return <li>
+                            <p>{note.content}</p>
+                            <button onClick={()=> this.props.deleteNote(note)}>Delete</button>
+                        </li>
+            })}
+        </ol>
+       </div>
      )
     }
 
