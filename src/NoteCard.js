@@ -21,7 +21,7 @@ export default class NoteCard extends Component {
     
         return (
             <div style={{border: '1px red solid'}}>
-                Note Card:
+                Notes/To Do: 
                 { this.props.selected.notes ? this.mapNotes() : " "}
                 
                 <NoteForm selected={this.props.selected} 
