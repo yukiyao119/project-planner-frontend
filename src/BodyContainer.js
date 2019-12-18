@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
-// import { log } from 'util';
+
 
 export default class BodyContainer extends Component {
 
@@ -11,16 +11,13 @@ export default class BodyContainer extends Component {
         projectsArr: [],
         user_id: 1,
         selected: {},
-        projectsComplete: [],
-        
-        
+        projectsComplete: []
     }
 
     componentDidMount(){
         fetch("http://localhost:3000/projects")
         .then(res => res.json())
         .then( projectsData => {
-            // console.log("PROJECTARRAY", projectsData)
             this.setState({
                 projectsArr: projectsData
             })
@@ -28,13 +25,22 @@ export default class BodyContainer extends Component {
     }
 
     
-    ///EDIT PROJECT FORM
-    editProjectRender = (newProject) => {
+    //PROJECT SHOW CARD
+    handleShowCard = (project) => {
+        this.setState({
+            selected: project
+        })
+    }
+    //CREATE PROJECT FORM
+    addToAll = (createdProject) => {
+        this.setState({
+            projectsArr: [...this.state.projectsArr, createdProject]
+        })
+    }
+    
+    //EDIT PROJECT FORM
+    editProject = (newProject) => {
         const newArray = this.state.projectsArr.filter(project => project.id !== newProject.id)
-        //if this condition is true it will return a new array with the project taken out
-        console.log(this.state.projectsArr)
-        // [1,2,3,4,5] [5]
-        // [1,2,3,4]
         
         this.setState({
             ...this.state,
@@ -43,23 +49,12 @@ export default class BodyContainer extends Component {
         })
     }
     
-     //ADD TO PROJECT
-    addToAll = (createdProject) => {
-        this.setState({
-            projectsArr: [...this.state.projectsArr, createdProject]
-        })
-        // console.log(this.state.projectsArr)
-    }
-    
-     
-
     //PROJECT DONE
     handleDone = (project) => {
-        // console.log("HELLO", this.state.projectsComplete)
+        
         console.log(project)
         const projectsComplete = this.state.projectsComplete
         const newProjectsArr = this.state.projectsArr.filter( curProject => {
-            console.log(curProject !== project)
             return curProject.id !== project.id
         })
 
@@ -71,15 +66,7 @@ export default class BodyContainer extends Component {
         }
     }
 
-
-    //PROJECT SHOW CARD
-    handleShowCard = (project) => {
-        this.setState({
-           
-            selected: project
-        })
-    }
-
+    //ADD NOTES
     addToNotes = (newNote) => {
         
         const project = this.state.projectsArr.find( (projects) => {
@@ -97,20 +84,18 @@ export default class BodyContainer extends Component {
         })
     }
 
-    deleteNote = (note) => {
-        console.log("body container", note)
-   
-        fetch(`http://localhost:3000/notes/${note.id}`, {
+    deleteNote = (noteObj) => {
+        fetch(`http://localhost:3000/notes/${noteObj.id}`, {
             method: "DELETE",
         })
         .then(res => res.json())
         .then( (deletedNote) => {
             
             const remainingNotes = this.state.selected.notes.filter( deletedNote => {
-                return note !== deletedNote
+                return noteObj !== deletedNote
             })
 
-         
+
             const project = this.state.projectsArr.find( (projectObj) => {
                 return  deletedNote.project.id === projectObj.id
             } )
@@ -125,7 +110,7 @@ export default class BodyContainer extends Component {
             const newProjectsArr = this.state.projectsArr.map( (project) => {
                 return project.id === updatedProject.id ? updatedProject : project
             })
-            //create a new array of projects with updated projects
+            // create a new array of projects with updated projects
 
             this.setState({
                 projectsArr: newProjectsArr,
@@ -133,43 +118,61 @@ export default class BodyContainer extends Component {
             })
         }
         )
-        
-        
     }
+    
    
     
+    
     render() {
-        console.log("what is project id", this.state.projectsArr)
+    
         return (
-            <div style={{border: '2px blue solid'}}>
-                <ProjectList 
-                handleShowCard={this.handleShowCard}
-                projects={this.state.projectsArr}
-                />
-
-                <ProjectForm 
-                addToAll={this.addToAll}
-                />
-
-                <DoneList
-                handleShowCard={this.handleShowCard}
-                selected={this.state.selected}
-                projectsComplete={this.state.projectsComplete}/>
-                
-                {this.state.selected.length === 0 ?  
-                    null
-                    :
-                    <ProjectCard 
-                    editProject={this.editProjectRender}
-                    selected={this.state.selected} 
-                    handleDone={this.handleDone}
-                    addToNotes={this.addToNotes}
-                    deleteNote={this.deleteNote}
-                    />
+            <React.Fragment>
+                <div className="border">
+                <div className="ui padded equal width grid">
+                    <div className="side-bar">
+                        <div className="eight wide column">
+                            <div className="ui segment">
+                                <ProjectList projects={this.state.projectsArr}
+                                            handleShowCard={this.handleShowCard}
+                                            sortArray={this.sortArray}
+                                            />  
+                            </div>
+                            <div className="ui segment">
+                                <DoneList handleShowCard={this.handleShowCard}
+                                        selected={this.state.selected}
+                                        projectsComplete={this.state.projectsComplete}/>
+                            
+                            </div>
+                        </div>
+                    </div>
                     
-                } 
-
-            </div>
+                </div>
+                <div className="project-card-container">
+                    <div className="project-card">
+                       
+                            {this.state.selected.length === 0 ?  
+                                    null
+                                    :
+                                <div>
+                                    <ProjectCard selected={this.state.selected}
+                                                editProject={this.editProject} 
+                                                handleDone={this.handleDone}
+                                                addToNotes={this.addToNotes}
+                                                deleteNote={this.deleteNote}
+                                                />
+                                    
+                                </div>
+                            } 
+                        
+                    </div>
+                </div>
+                </div>
+                <div className="four wide column">
+                        <div className="ui segment">
+                            <ProjectForm addToAll={this.addToAll}/>
+                        </div>
+                </div>
+            </React.Fragment>
         )
 
 
