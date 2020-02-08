@@ -18,8 +18,11 @@ export default class BodyContainer extends Component {
         fetch("http://localhost:3000/projects")
         .then(res => res.json())
         .then( projectsData => {
+            const completed = [...projectsData].filter(project => project.done === true)
+            const unCompleted = [...projectsData].filter(project => project.done !== true)
             this.setState({
-                projectsArr: projectsData
+                projectsArr: unCompleted,
+                projectsComplete: completed
             })
         })
     }
@@ -79,11 +82,28 @@ export default class BodyContainer extends Component {
         })
 
         if (!projectsComplete.includes(project)) {
-            this.setState({
-                projectsComplete: [...projectsComplete, project],
-                projectsArr: newProjectsArr
-            }, ()=>{ console.log(this.state.projectsArr)})
+            fetch(`http://localhost:3000/projects/${this.state.selected.id}`, {
+                method: "PATCH",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    done: true
+                })
+              })
+            .then(res => res.json())
+            .then( updatedSelected => {
+                this.setState({
+                    selected: updatedSelected,
+                    projectsComplete: [...projectsComplete, updatedSelected],
+                    projectsArr: newProjectsArr
+                }, ()=> {console.log("all completed arr", this.state.projectsArr)})
+            })
         }
+
+        debugger
+
     }
 
     //CLICK TO SHOW PROJECT CARD
@@ -137,7 +157,7 @@ export default class BodyContainer extends Component {
                     :
                     <div >
                     <ProjectCard 
-                    handleReverse={this.handleReverse}
+                    // handleReverse={this.handleReverse}
                     selected={this.state.selected}
                     addUpdatedToAll={this.addUpdatedToAll}
                     handleDone={this.handleDone}/>

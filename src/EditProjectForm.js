@@ -70,10 +70,10 @@ export default class EditProjectForm extends Component {
                 
                 </form>
 
-                <button type="button"
+                {/* <button type="button"
                     className="ui button"
                     onClick={ this.props.handleReverse}
-                    >Reverse</button>
+                    >Reverse</button> */}
 
             </div>
         )

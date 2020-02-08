@@ -95,7 +95,7 @@ export default class ProjectCard extends Component {
                         <div className="five wide column">
                             <div className="ui segment">
                             <EditProjectForm 
-                            handleReverse={this.props.handleReverse}
+                            // handleReverse={this.props.handleReverse}
                             selected={this.props.selected}
                             addUpdatedToAll={this.props.addUpdatedToAll}
                             />
