@@ -8,7 +8,7 @@ export default class Nav extends Component {
 
         return (
             <div style={navBarStyle}>
-                <h1 className="ui center aligned header purple">Better Than Trello</h1>
+                <h1 className="ui center aligned header purple" id="fonts">Better Than Trello</h1>
                 <NavLink 
                     to='/'
                     activeClassName='name-watever-you-want'
@@ -29,13 +29,10 @@ export default class Nav extends Component {
 }
 
 const navBarStyle={
-    // border: '1px black solid',
     margin: '15px',
     textAlign: 'center'
 }
 
 const navLinkStyle = {
-    background: '#C8D0DA',
-    // padding: '5px',
     margin: '10px'
 }

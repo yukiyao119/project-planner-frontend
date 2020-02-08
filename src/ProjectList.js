@@ -48,7 +48,7 @@ export default class ProjectList extends Component {
         const searchedProject = this.resultProject(sortedProject)
 
         const projectsItem = searchedProject.map(project => 
-            <li key={project.id}
+            <li key={project.id} 
                 onClick={() => this.props.handleShowCard(project)}>
                     {project.name}
             </li>)

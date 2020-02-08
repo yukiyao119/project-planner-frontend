@@ -10,15 +10,14 @@ export default class NoteCard extends Component {
 
         const noteItems = filteredNotes.map(note => 
         <React.Fragment key={note.id}>
-            <li className="ui item" key={note.id} id={note.id}> 
+            <p key={note.id} id={note.id} className="noteStyle"> 
                 {note.content}   
                 <button key={note.id} id={note.id}
                 className="ui mini icon button"
                 onClick={()=> {this.props.handleDelete(note)}}
-                ><i aria-hidden="true" className="ui delete icon"></i>
-                    {/* Delete this note */}
+                > <i aria-hidden="true" className="ui remove icon"></i>
                 </button>
-            </li>
+            </p>
             
         </React.Fragment>)
 
