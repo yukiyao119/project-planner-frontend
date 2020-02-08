@@ -4,7 +4,7 @@ export default class About extends Component {
     render() {
         return (
             <div className="ui piled segment" id="segment-width">
-                <h2 class="ui header purple">Project Planner</h2>
+                <h2 class="ui header purple" id="fonts">Project Planner</h2>
                 
                 <h3 class="ui header grey">
                     This is an application made with Ruby on Rails API and React.js.<br/>

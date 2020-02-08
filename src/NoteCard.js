@@ -24,7 +24,7 @@ export default class NoteCard extends Component {
         return (
 
             <div >
-                <h3 className="ui center aligned header purple">Note board</h3>
+                <h3 className="ui center aligned header purple" id="fonts">Note board</h3>
                 
                 <ol className="ui list">
                     {noteItems}

@@ -48,7 +48,7 @@ export default class ProjectForm extends Component {
 
         return (
             <div style={projectFormStyle}>
-                <h2 className="ui center aligned header purple">Add a new project</h2>
+                <h2 className="ui center aligned header purple" id="fonts">Add a new project</h2>
                 
                 <form className="ui form" onSubmit={this.handleSubmit}>
                     <div className="field">

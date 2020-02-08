@@ -47,7 +47,7 @@ export default class NoteForm extends Component {
 
         return (
             <div >
-                <h3 className="ui center aligned header purple">Add a new Note</h3>
+                <h3 className="ui center aligned header purple" id="fonts">Add a new Note</h3>
 
                 <form className="ui form" onSubmit={this.handleNoteSubmit}>
                     <div className="ui field">

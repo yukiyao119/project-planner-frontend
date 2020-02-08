@@ -63,7 +63,7 @@ export default class ProjectCard extends Component {
                 <div className="ui red fluid card" style={cardStyle}>
 
                     <div className="content">
-                        <h2 className="ui center aligned header purple">Project Card</h2>
+                        <h2 className="ui center aligned header purple" id="fonts">Project Card</h2>
                         <div className="ui header">Project Name: {this.props.selected.name}</div>
                         <div className="description">Project Details: {this.props.selected.details}</div>
                     </div>

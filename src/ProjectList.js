@@ -62,7 +62,7 @@ export default class ProjectList extends Component {
                     handleSort={this.handleSort}
                     />
                 {/* </div> */}
-                <h2 className="ui header purple">Project List: </h2>
+                <h2 className="ui header purple" id="fonts">Project List: </h2>
 
                 <h2>{projectsItem}</h2>
             </div>

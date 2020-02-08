@@ -48,7 +48,7 @@ export default class EditProjectForm extends Component {
     render() {
         return (
             <div >
-                <h2 className="ui center aligned header purple">Edit project</h2>
+                <h2 className="ui center aligned header purple" id="fonts">Edit project</h2>
                 
                 <form className="ui form" onSubmit={this.handleSubmit}>
                 <div className="field">
