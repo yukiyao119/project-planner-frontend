@@ -27,27 +27,26 @@ export default class BodyContainer extends Component {
         })
     }
 
-    handleReverse = () => {
-        // console.log("Reversing", this.state.selected);
-        const newName = this.state.selected.name.split("").reverse().join("")
-        const newSelected = {
-            ...this.state.selected,
-            name: newName
-            }
-        const newnewProjectsArr = [...this.state.projectsArr].map(project => {
-            // console.log(project, this.state.selected);
-            if(project.id === newSelected.id){
-                return newSelected
-            }
-            return project
-        })
+    // handleReverse = () => {
+    //     const newName = this.state.selected.name.split("").reverse().join("")
+    //     const newSelected = {
+    //         ...this.state.selected,
+    //         name: newName
+    //         }
+    //     const newnewProjectsArr = [...this.state.projectsArr].map(project => {
+    //         // console.log(project, this.state.selected);
+    //         if(project.id === newSelected.id){
+    //             return newSelected
+    //         }
+    //         return project
+    //     })
 
-        this.setState({
-            selected: newSelected,
-            // { ...this.state.selected, name: newName },
-            projectsArr: newnewProjectsArr
-        }, ()=> {console.log(this.state.selected, this.state.newnewProjectsArr)})
-    }
+    //     this.setState({
+    //         selected: newSelected,
+    //         // { ...this.state.selected, name: newName },
+    //         projectsArr: newnewProjectsArr
+    //     }, ()=> {console.log(this.state.selected, this.state.newnewProjectsArr)})
+    // }
     
     // ADD NEW PROJECT TO ALL
     addToAll = (createdProject) => {
