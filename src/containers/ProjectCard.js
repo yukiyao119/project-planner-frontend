@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NoteCard from './NoteCard';
-import EditProjectForm from './EditProjectForm'
+import EditProjectForm from '../components/EditProjectForm'
 
 export default class ProjectCard extends Component {
 

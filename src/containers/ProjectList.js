@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterComponent from './FilterComponent';
+import FilterComponent from '../components/FilterComponent';
 
 export default class ProjectList extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
-import ProjectForm from './ProjectForm';
+import ProjectForm from '../components/ProjectForm';
 import DoneList from './DoneList';
 // import { log } from 'util';
 

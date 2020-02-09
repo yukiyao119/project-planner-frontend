@@ -1,10 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-// import LogIn from './LogIn';
-import Nav from './Nav';
-import BodyContainer from './BodyContainer';
-import About from './About';
+import Nav from './components/Nav';
+import BodyContainer from './containers/BodyContainer';
+import About from './components/About';
 import {Route, Switch} from 'react-router-dom';
 
 

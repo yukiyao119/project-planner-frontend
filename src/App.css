@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+#fonts{
+  font-family: 'Montserrat', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -42,6 +46,3 @@ li:hover{
   text-align: center;
 }
 
-#fonts{
-  font-family: 'Montserrat', sans-serif;
-}

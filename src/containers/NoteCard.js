@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NoteForm from './NoteForm.js'
+import NoteForm from '../components/NoteForm'
 
 export default class NoteCard extends Component {
 
