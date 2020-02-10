@@ -5,19 +5,17 @@ export default class ProjectForm extends Component {
     state = {
         name: '',
         details: '',
-        done: false,
         user_id: 1
     }
 
-    handleChange = (evt) => {
+    handleChange = (e) => {
         this.setState({
-            [evt.target.name]: evt.target.value
+            [e.target.name]: e.target.value
         }, ()=>{console.log(this.state)})
     }
-
-    handleSubmit = (evt) => {
-        evt.preventDefault()
-        console.log('form submitted!');
+    
+    handleSubmit = (e) => {
+        e.preventDefault()
         fetch('http://localhost:3000/projects', {
             method: "POST",
             headers: {
@@ -26,13 +24,12 @@ export default class ProjectForm extends Component {
             body: JSON.stringify({
               name: this.state.name,
               details: this.state.details,
-              done: false,
               user_id: 1
             })
           })
           .then(res => res.json())
           .then(createdProject => {
-              console.log(createdProject);
+              console.log(createdProject)
               this.props.addToAll(createdProject)
           })
     }
@@ -40,21 +37,18 @@ export default class ProjectForm extends Component {
 
     render() {
         return (
-            <div style={{border: '1px pink solid'}}>
-                <h2>Im Project Form</h2>
+            <div className="project-form">
+                <h2>Project Form</h2>
                 
-                <form onSubmit={this.handleSubmit}>
-                
-                    <input label="Name" placeholder="Project Name" name="name" 
-                    value={this.state.name} 
-                    onChange={this.handleChange}/>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <input  label="Name" placeholder="Project Name" name="name" 
+                            value={this.state.name} 
+                            onChange={(e) => this.handleChange(e)}/>
                     
                     <input label="Details" placeholder="Project Details" name="details" 
-                    value={this.state.details} 
-                    onChange={this.handleChange}/>
-
-                    <button>Submit</button>
-                    
+                           value={this.state.details} 
+                           onChange={(e) => this.handleChange(e)}/>
+                    <button>Submit</button>  
                 </form>
             </div>
         )
