@@ -1,12 +1,9 @@
-import React, {Component} from 'react';
-// import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-// import LogIn from './LogIn';
-import Nav from './Nav';
-import BodyContainer from './BodyContainer';
-import About from './About'
-import {Route, Switch} from 'react-router-dom'
-// import {Route, Switch, NavLink, Redirect, withRouter} from 'react-router-dom';
+import Nav from './components/Nav';
+import BodyContainer from './containers/BodyContainer';
+import About from './components/About';
+import {Route, Switch} from 'react-router-dom';
 
 
 class App extends Component {
@@ -16,13 +13,15 @@ class App extends Component {
 
     return (
       <main >
-        <Nav />
-        <Switch>
-          <Route exact path={'/'} component={BodyContainer}/>
-          <Route path={'/about'} component={About}/>
-        </Switch>
-        
       
+        <Nav />
+        
+        <Switch>
+          <Route exact path={'/'} component={BodyContainer} />
+          <Route path={'/about'} component={About} />
+          {/* <Redirect to='/' /> */}
+        </Switch>
+
       </main>
       
       )
