@@ -33,7 +33,7 @@ Use `npm install && npm start` to run the application.
 
 
 ## Credits
-This is a group project that I work with my partner Brian Wong when I was in Flatiron school, so many thanks to the instructors, coaches and my partner in the program!
+This is a group project that made by me and my partner Brian Wong when I was in Flatiron school, so many thanks to the instructors, coaches and my partner in the program!
 
 
 
