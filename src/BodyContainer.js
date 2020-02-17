@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
-const localhost = "http://localhost:3000/"
+// const localhost = "http://localhost:3000/"
 const heroku = "https://stormy-ocean-97302.herokuapp.com"
 
 export default class BodyContainer extends Component {
@@ -16,7 +16,7 @@ export default class BodyContainer extends Component {
     }
 
     componentDidMount(){
-        fetch(`https://stormy-ocean-97302.herokuapp.com/projects/projects`)
+        fetch(`https://stormy-ocean-97302.herokuapp.com/projects`)
         .then(res => res.json())
         .then( projectsData => {
             console.log("hi",projectsData)
