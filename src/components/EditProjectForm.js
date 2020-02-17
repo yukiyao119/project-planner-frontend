@@ -19,7 +19,7 @@ export default class EditProjectForm extends Component {
         evt.preventDefault()
         // console.log(this.props);
         
-        fetch(`http://localhost:3000/projects/${this.props.selected.id}`, {
+        fetch(`https://stormy-ocean-97302.herokuapp.com/projects/${this.props.selected.id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json'

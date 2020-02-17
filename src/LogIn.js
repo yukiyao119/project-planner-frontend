@@ -18,7 +18,7 @@ class LogIn extends React.Component {
     logInSubmitted = (event) => {
       event.preventDefault()
       // make a fetch
-      fetch("http://localhost:3000/login", {
+      fetch("https://stormy-ocean-97302.herokuapp.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

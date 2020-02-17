@@ -11,7 +11,7 @@ export default class ProjectCard extends Component {
 
     handleDelete = (noteObj) => {
         // console.log("Deleting");
-        fetch(`http://localhost:3000/notes/${noteObj.id}`, {
+        fetch(`https://stormy-ocean-97302.herokuapp.com/notes/${noteObj.id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())
@@ -40,7 +40,7 @@ export default class ProjectCard extends Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/notes")
+        fetch("https://stormy-ocean-97302.herokuapp.com/notes")
         .then(res => res.json())
         .then( notesData => {
             // console.log("all notes arr", notesData)

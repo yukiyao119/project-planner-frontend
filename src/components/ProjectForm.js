@@ -18,7 +18,7 @@ export default class ProjectForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
 
-        fetch('http://localhost:3000/projects', {
+        fetch('https://stormy-ocean-97302.herokuapp.com/projects', {
             method: "POST",
             headers: {
               'Content-Type': 'application/json'
