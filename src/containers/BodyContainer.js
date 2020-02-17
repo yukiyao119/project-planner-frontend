@@ -15,7 +15,8 @@ export default class BodyContainer extends Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/projects")
+//         fetch("http://localhost:3000/projects")
+        fetch("https://stormy-ocean-97302.herokuapp.com/projects")
         .then(res => res.json())
         .then( projectsData => {
             const completed = [...projectsData].filter(project => project.done === true)
@@ -27,26 +28,6 @@ export default class BodyContainer extends Component {
         })
     }
 
-    // handleReverse = () => {
-    //     const newName = this.state.selected.name.split("").reverse().join("")
-    //     const newSelected = {
-    //         ...this.state.selected,
-    //         name: newName
-    //         }
-    //     const newnewProjectsArr = [...this.state.projectsArr].map(project => {
-    //         // console.log(project, this.state.selected);
-    //         if(project.id === newSelected.id){
-    //             return newSelected
-    //         }
-    //         return project
-    //     })
-
-    //     this.setState({
-    //         selected: newSelected,
-    //         // { ...this.state.selected, name: newName },
-    //         projectsArr: newnewProjectsArr
-    //     }, ()=> {console.log(this.state.selected, this.state.newnewProjectsArr)})
-    // }
     
     // ADD NEW PROJECT TO ALL
     addToAll = (createdProject) => {
@@ -100,9 +81,6 @@ export default class BodyContainer extends Component {
                 }, ()=> {console.log("all completed arr", this.state.projectsArr)})
             })
         }
-
-        debugger
-
     }
 
     //CLICK TO SHOW PROJECT CARD
