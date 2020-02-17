@@ -3,7 +3,7 @@ import ProjectCard from './ProjectCard';
 import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
-
+const localhost = "http://localhost:3000/"
 
 export default class BodyContainer extends Component {
 
@@ -15,7 +15,7 @@ export default class BodyContainer extends Component {
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/projects")
+        fetch(`http://localhost:3000/projects`)
         .then(res => res.json())
         .then( projectsData => {
             this.setState({
