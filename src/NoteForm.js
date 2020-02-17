@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+const localhost = "http://localhost:3000/"
+const heroku = "https://stormy-ocean-97302.herokuapp.com/"
 export default class NoteForm extends Component {
 
     state = {
@@ -18,7 +19,7 @@ export default class NoteForm extends Component {
 
     handleNoteSubmit = (e) => {
         e.preventDefault()
-        fetch("http://localhost:3000/notes", {
+        fetch(`${heroku}notes`, {
             method: 'POST',
             headers: {"content-type": "application/json"},
             body: JSON.stringify({

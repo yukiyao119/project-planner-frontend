@@ -4,6 +4,7 @@ import ProjectList from './ProjectList';
 import ProjectForm from './ProjectForm';
 import DoneList from './DoneList';
 const localhost = "http://localhost:3000/"
+const heroku = "https://stormy-ocean-97302.herokuapp.com/"
 
 export default class BodyContainer extends Component {
 
@@ -15,7 +16,7 @@ export default class BodyContainer extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://localhost:3000/projects`)
+        fetch(`${heroku}/projects`)
         .then(res => res.json())
         .then( projectsData => {
             this.setState({
@@ -85,7 +86,7 @@ export default class BodyContainer extends Component {
     }
 
     deleteNote = (noteObj) => {
-        fetch(`http://localhost:3000/notes/${noteObj.id}`, {
+        fetch(`${heroku}notes/${noteObj.id}`, {
             method: "DELETE",
         })
         .then(res => res.json())
