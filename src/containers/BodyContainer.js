@@ -62,7 +62,7 @@ export default class BodyContainer extends Component {
         })
 
         if (!projectsComplete.includes(project)) {
-            fetch(`http://localhost:3000/projects/${this.state.selected.id}`, {
+            fetch(`https://stormy-ocean-97302.herokuapp.com/projects/${this.state.selected.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
