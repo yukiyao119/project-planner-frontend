@@ -1,3 +1,23 @@
+## Project Planner
+
+
+## About
+It is a project management tool that allows you to track your current projects. It allows you to browse, search, sort, create, edit current projects. As well as view the details, add and delete notes.
+
+## Technologies
+
+* Frontend: React
+* Backend: Ruby on Rails, PostgreSQL
+* Technologies
+
+## Features
+
+* 
+* In order to better identify a particular project the user can browse, search, sort
+
+## Future Features
+
+
 # Project Planner
 
 It is a project management tool that allows you to track your current projects. It allows you to browse, search, sort, create, edit current projects. As well as view the details, add and delete notes.
