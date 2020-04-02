@@ -5,7 +5,7 @@ export default class NoteForm extends Component {
     state = {
         content: '',
         user_id: 1,
-        // project_id: this.props.selected.id
+        project_id: this.props.selected.id
     }
 
     handleContentChange = (evt) => {

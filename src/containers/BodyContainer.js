@@ -30,7 +30,7 @@ export default class BodyContainer extends Component {
     }
 
     
-    // ADD NEW PROJECT TO ALL
+    // CREATE A NEW PROJECT AND ADD IT TO ALL
     addToAll = (createdProject) => {
         // console.log("adding");
         this.setState({
@@ -38,21 +38,34 @@ export default class BodyContainer extends Component {
         })
     }
 
-    // ADD UPDATED PROJECT TO ALL
-    addUpdatedToAll = (updatedProject) => {
-        console.log("adding updatedProject to all, changing selected to updatedProject")
-        const updatedProjectsArr = [...this.state.projectsArr].map(project => {
-            if (project.id === updatedProject.id) {
-                return updatedProject
-            }
-            return project
-        })
+    //// ADD UPDATED PROJECT TO ALL
+    // addUpdatedToAll = (updatedProject) => {
+    //     console.log("adding updatedProject to all, changing selected to updatedProject")
+    //     const updatedProjectsArr = [...this.state.projectsArr].map(project => {
+    //         if (project.id === updatedProject.id) {
+    //             return updatedProject
+    //         }
+    //         return project
+    //     })
 
-        this.setState({
-            projectsArr: updatedProjectsArr,
-            selected: updatedProject
-        }, ()=> {console.log(this.state.projectsArr)})
-    }
+    //     this.setState({
+    //         projectsArr: updatedProjectsArr,
+    //         selected: updatedProject
+    //     }, ()=> {console.log(this.state.projectsArr)})
+    // }
+
+    //EDIT PROJECT FORM
+      editProject = (newProject) => {
+          const newArray = this.state.projectsArr.filter((project) => {
+              return project.id !== newProject.id
+          })
+
+          this.setState({
+              ...this.state,
+              projectsArr: [...newArray, newProject],
+              selected: newProject
+          })
+      }
 
     // MOVE PROJECT TO DONELIST
     handleDone = (project) => {
@@ -106,7 +119,7 @@ export default class BodyContainer extends Component {
             selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
         })
     }
-
+    //DELETE NOTES FROM PROJECT
     deleteNote = (noteObj) => {
         fetch(`${localhost}notes/${noteObj.id}`, {
             method: "DELETE",
@@ -141,6 +154,8 @@ export default class BodyContainer extends Component {
         })
     }
 
+  
+
     
 
     render() {
@@ -173,6 +188,7 @@ export default class BodyContainer extends Component {
                             handleShowCard={this.handleShowCard}
                             selected = {this.state.selected}
                             projectsComplete={this.state.projectsComplete}
+                            
                             />
                         </div>
                     </div>
@@ -188,7 +204,8 @@ export default class BodyContainer extends Component {
                     // handleReverse={this.handleReverse}
                     addToNotes={this.addToNotes}
                     selected={this.state.selected}
-                    addUpdatedToAll={this.addUpdatedToAll}
+                    editProject={this.editProject}
+                    // addUpdatedToAll={this.addUpdatedToAll} 
                     handleDone={this.handleDone}
                     deleteNote={this.deleteNote}/>
                     

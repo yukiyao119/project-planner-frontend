@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-
+const heroku = "https://stormy-ocean-97302.herokuapp.com/"
+const localhost = "http://localhost:3000/"
 export default class EditProjectForm extends Component {
 
     state = {
         name: '',
-        details: '',
-        done: false,
-        user_id: 1
+        details: ''
     }
 
     handleChange = (evt) => {
@@ -17,31 +16,30 @@ export default class EditProjectForm extends Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        // console.log(this.props);
-        
-        fetch(`https://stormy-ocean-97302.herokuapp.com/projects/${this.props.selected.id}`, {
+    
+        const id = this.props.selected.id
+        fetch(`${localhost}projects/${id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
               name: this.state.name,
-              details: this.state.details,
-              done: false,
-              user_id: 1
+              details: this.state.details
             })
           })
           .then(res => res.json())
           .then(updatedProject => {
-            //   console.log(updatedProject)
-              this.props.addUpdatedToAll(updatedProject)
+              console.log("updated", updatedProject)
+            //   this.props.addUpdatedToAll(updatedProject)
+            this.props.editProject(updatedProject)
           })
 
-        this.setState({
-            ...this.state, 
-            name: "",
-            details: ""
-        })
+        // this.setState({
+        //     ...this.state, 
+        //     name: "",
+        //     details: ""
+        // })
 
     }
 

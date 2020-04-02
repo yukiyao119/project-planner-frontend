@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-
+const heroku = "https://stormy-ocean-97302.herokuapp.com/"
+const localhost = "http://localhost:3000/"
 export default class ProjectForm extends Component {
 
     state = {
         name: '',
         details: '',
-        done: false,
         user_id: 1
     }
 
@@ -18,7 +18,7 @@ export default class ProjectForm extends Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
 
-        fetch('https://stormy-ocean-97302.herokuapp.com/projects', {
+        fetch(`${localhost}projects`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json'
@@ -32,7 +32,6 @@ export default class ProjectForm extends Component {
           })
           .then(res => res.json())
           .then(createdProject => {
-            //   console.log(createdProject)
               this.props.addToAll(createdProject)
           })
 

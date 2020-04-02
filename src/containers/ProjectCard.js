@@ -83,10 +83,10 @@ export default class ProjectCard extends Component {
                         <div className="ten wide column">
                             <div className="ui segment">
                             <NoteCard 
-                            handleDelete={this.handleDelete}
-                            addToAllNotes={this.addToAllNotes}
-                            allNotesArr={this.state.allNotesArr}
-                            filterProjectNotes={this.filterProjectNotes}
+                            // handleDelete={this.handleDelete}
+                            // addToAllNotes={this.addToAllNotes}
+                            // allNotesArr={this.state.allNotesArr}
+                            // filterProjectNotes={this.filterProjectNotes}
                             selected={this.props.selected}
                             addToNotes={this.props.addToNotes}
                             deleteNote={this.props.deleteNote}
@@ -99,7 +99,8 @@ export default class ProjectCard extends Component {
                             <EditProjectForm 
                             // handleReverse={this.props.handleReverse}
                             selected={this.props.selected}
-                            addUpdatedToAll={this.props.addUpdatedToAll}
+                            // addUpdatedToAll={this.props.addUpdatedToAll}
+                            editProject={this.props.editProject}
                             />
                             </div>
                         </div>
