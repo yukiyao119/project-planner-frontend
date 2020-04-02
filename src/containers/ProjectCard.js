@@ -4,40 +4,40 @@ import EditProjectForm from '../components/EditProjectForm'
 
 export default class ProjectCard extends Component {
 
-    state = {
-        allNotesArr: [],
-        selectedNote: {}
-    }
+    // state = {
+    //     allNotesArr: [],
+    //     selectedNote: {}
+    // }
 
-    handleDelete = (noteObj) => {
-        // console.log("Deleting");
-        fetch(`https://stormy-ocean-97302.herokuapp.com/notes/${noteObj.id}`, {
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(deletedNote => {
-            // if (deletedNote.ok){
-                const newAllNotes = [...this.state.allNotesArr].filter(note => {
-                    return (note.id !== noteObj.id)
-                })
-                this.setState({
-                    allNotesArr: newAllNotes
-                })
-            // }
-        })
-    }
+    // handleDelete = (noteObj) => {
+    //     // console.log("Deleting");
+    //     fetch(`https://stormy-ocean-97302.herokuapp.com/notes/${noteObj.id}`, {
+    //         method: 'DELETE'
+    //     })
+    //     .then(res => res.json())
+    //     .then(deletedNote => {
+    //         // if (deletedNote.ok){
+    //             const newAllNotes = [...this.state.allNotesArr].filter(note => {
+    //                 return (note.id !== noteObj.id)
+    //             })
+    //             this.setState({
+    //                 allNotesArr: newAllNotes
+    //             })
+    //         // }
+    //     })
+    // }
 
-    addToAllNotes = (createdNote) => {
-        this.setState({
-            allNotesArr: [...this.state.allNotesArr, createdNote]
-        }, ()=> {console.log("all notes array now", this.state.allNotesArr)})
-    }
+    // addToAllNotes = (createdNote) => {
+    //     this.setState({
+    //         allNotesArr: [...this.state.allNotesArr, createdNote]
+    //     }, ()=> {console.log("all notes array now", this.state.allNotesArr)})
+    // }
     
-    filterProjectNotes = (notes) => {
-        return notes.filter(note => {
-            return note.project.id === this.props.selected.id
-        })
-    }
+    // filterProjectNotes = (notes) => {
+    //     return notes.filter(note => {
+    //         return note.project.id === this.props.selected.id
+    //     })
+    // }
 
     // componentDidMount(){
     //     fetch("https://stormy-ocean-97302.herokuapp.com/notes")
