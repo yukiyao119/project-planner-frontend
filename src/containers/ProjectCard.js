@@ -39,22 +39,22 @@ export default class ProjectCard extends Component {
         })
     }
 
-    componentDidMount(){
-        fetch("https://stormy-ocean-97302.herokuapp.com/notes")
-        .then(res => res.json())
-        .then( notesData => {
-            // console.log("all notes arr", notesData)
-            this.setState({
-                allNotesArr: notesData
-            }, ()=> {console.log("all notes arr", this.state.allNotesArr)})
-        })
+    // componentDidMount(){
+    //     fetch("https://stormy-ocean-97302.herokuapp.com/notes")
+    //     .then(res => res.json())
+    //     .then( notesData => {
+    //         // console.log("all notes arr", notesData)
+    //         this.setState({
+    //             allNotesArr: notesData
+    //         }, ()=> {console.log("all notes arr", this.state.allNotesArr)})
+    //     })
 
-    }
+    // }
 
     
     render() {
 
-        console.log(this.props.selected);
+        console.log("PROJECT CARD", this.props.selected);
         
         return (
 
@@ -88,6 +88,7 @@ export default class ProjectCard extends Component {
                             allNotesArr={this.state.allNotesArr}
                             filterProjectNotes={this.filterProjectNotes}
                             selected={this.props.selected}
+                            addToNotes={this.props.addToNotes}
                             />
                             </div>
                         </div>

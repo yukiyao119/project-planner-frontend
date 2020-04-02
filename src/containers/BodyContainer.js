@@ -93,12 +93,13 @@ export default class BodyContainer extends Component {
 
     //ADD NOTES
     addToNotes = (newNote) => {
+        console.log("what are new notes", newNote)
         const project = this.state.projectsArr.find ((projects) => {
             return projects.id === newNote.project.id
         })
         const updateProject = {...project, notes: [...project.notes, newNote]}
         const newProjectArr = this.state.projectsArr.map((project) => {
-            return project.id === updateProject.id ? updateProject: project
+            return project.id === updateProject.id ? updateProject : project
         })
         this.setState({
             projectsArr: newProjectArr,
@@ -109,7 +110,7 @@ export default class BodyContainer extends Component {
     
 
     render() {
-
+        console.log("what is projects",this.state.projectsArr)
         return (
 
             <React.Fragment>

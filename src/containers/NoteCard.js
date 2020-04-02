@@ -4,11 +4,11 @@ import NoteForm from '../components/NoteForm'
 export default class NoteCard extends Component {
 
     render() {
-
-        const { allNotesArr, filterProjectNotes } = this.props
+        console.log("NOTE CARD", this.props.selected)
+        const {allNotesArr, filterProjectNotes, selected} = this.props
         const filteredNotes = filterProjectNotes(allNotesArr)
 
-        const noteItems = filteredNotes.map(note => 
+        const noteItems = selected.notes.map(note => 
         <React.Fragment key={note.id}>
             <p key={note.id} id={note.id} className="noteStyle"> 
                 {note.content}   
@@ -22,6 +22,7 @@ export default class NoteCard extends Component {
         </React.Fragment>)
 
         return (
+            
 
             <div >
                 <h3 className="ui center aligned header purple" id="fonts">Note board</h3>
@@ -31,6 +32,7 @@ export default class NoteCard extends Component {
                 </ol>
 
                 <NoteForm 
+                addToNotes={this.props.addToNotes}
                 addToAllNotes={this.props.addToAllNotes}
                 selected={this.props.selected}
                 />
