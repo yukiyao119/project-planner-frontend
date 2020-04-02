@@ -38,21 +38,21 @@ export default class BodyContainer extends Component {
         })
     }
 
-    //// ADD UPDATED PROJECT TO ALL
-    // addUpdatedToAll = (updatedProject) => {
-    //     console.log("adding updatedProject to all, changing selected to updatedProject")
-    //     const updatedProjectsArr = [...this.state.projectsArr].map(project => {
-    //         if (project.id === updatedProject.id) {
-    //             return updatedProject
-    //         }
-    //         return project
-    //     })
+    // ADD UPDATED PROJECT TO ALL
+    addUpdatedToAll = (updatedProject) => {
+        console.log("adding updatedProject to all, changing selected to updatedProject")
+        const updatedProjectsArr = [...this.state.projectsArr].map(project => {
+            if (project.id === updatedProject.id) {
+                return updatedProject
+            }
+            return project
+        })
 
-    //     this.setState({
-    //         projectsArr: updatedProjectsArr,
-    //         selected: updatedProject
-    //     }, ()=> {console.log(this.state.projectsArr)})
-    // }
+        this.setState({
+            projectsArr: updatedProjectsArr,
+            selected: updatedProject
+        }, ()=> {console.log(this.state.projectsArr)})
+    }
 
     //EDIT PROJECT FORM
       editProject = (newProject) => {
@@ -104,55 +104,62 @@ export default class BodyContainer extends Component {
         })
     }
 
-    //ADD NOTES
-    addToNotes = (newNote) => {
-        console.log("what are new notes", newNote)
-        const project = this.state.projectsArr.find ((projects) => {
-            return projects.id === newNote.project.id
-        })
-        const updateProject = {...project, notes: [...project.notes, newNote]}
-        const newProjectArr = this.state.projectsArr.map((project) => {
-            return project.id === updateProject.id ? updateProject : project
-        })
-        this.setState({
-            projectsArr: newProjectArr,
-            selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
-        })
-    }
-    //DELETE NOTES FROM PROJECT
-    deleteNote = (noteObj) => {
-        fetch(`${localhost}notes/${noteObj.id}`, {
-            method: "DELETE",
-        })
-        .then(res => res.json())
-        .then( (deletedNote) => {
-            const remainingNotes = this.state.selected.notes.filter( (deletedNote) => {
-                return noteObj !== deletedNote
-            })
-            //find the project of the deleted note.
-            const project = this.state.projectsArr.find ((projectObj) => {
-                return deletedNote.project.id === projectObj.id
-            })
+    // //ADD NOTES
+    // addToNotes = (newNote) => {
+    //     console.log("what are new notes", newNote)
+    //     const project = this.state.projectsArr.find ((projects) => {
+    //         return projects.id === newNote.project.id
+    //     })
+    //     const updateProject = {...project, notes: [...project.notes, newNote]}
+    //     const newProjectArr = this.state.projectsArr.map((project) => {
+    //         return project.id === updateProject.id ? updateProject : project
+    //     })
+    //     this.setState({
+    //         projectsArr: newProjectArr,
+    //         selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
+    //     })
+    // }
+    // //DELETE NOTES FROM PROJECT
+    // deleteNote = (noteObj) => {
+    //     fetch(`${localhost}notes/${noteObj.id}`, {
+    //         method: "DELETE",
+    //     })
+    //     .then(res => res.json())
+    //     .then( (deletedNote) => {
+    //         const remainingNotes = this.state.selected.notes.filter( (deletedNote) => {
+    //             return noteObj !== deletedNote
+    //         })
+    //         //find the project of the deleted note.
+    //         let project = this.state.projectsArr.find ((projectObj) => {
+    //             return deletedNote.project.id === projectObj.id
+    //         }) 
+    //         if (project === undefined){
+    //         let project = this.state.projectsComplete.find( (projectObj) => {
+    //             return deletedNote.project.id === projectObj
+    //         })}
+    //         console.log("deletednote", project)
 
-            //filter the project notes to remove the deleted note
-            const filteredNotes = project.notes.filter( (removeNote) => {
-                return removeNote.id !== deletedNote.id
-            })
-
-            //update the project with new notes
-            const updatedProject = {...project, notes: filteredNotes}
             
-            //create a new array of project with updated 
-            const newProjectsArr = this.state.projectsArr.map ( (project) => {
-                return project.id === updatedProject.id ? updatedProject : project
-            })
 
-            this.setState({
-                projectsArr: newProjectsArr,
-                selected: {...this.state.selected, notes: remainingNotes}
-            })
-        })
-    }
+    //         //filter the project notes to remove the deleted note
+    //         const filteredNotes = project.notes.filter( (removeNote) => {
+    //             return removeNote.id !== deletedNote.id
+    //         })
+
+    //         //update the project with new notes
+    //         const updatedProject = {...project, notes: filteredNotes}
+            
+    //         //create a new array of project with updated 
+    //         const newProjectsArr = this.state.projectsArr.map ( (project) => {
+    //             return project.id === updatedProject.id ? updatedProject : project
+    //         })
+
+    //         this.setState({
+    //             projectsArr: newProjectsArr,
+    //             selected: {...this.state.selected, notes: remainingNotes}
+    //         })
+    //     })
+    // }
 
   
 
@@ -202,12 +209,13 @@ export default class BodyContainer extends Component {
                     <div >
                     <ProjectCard 
                     // handleReverse={this.handleReverse}
-                    addToNotes={this.addToNotes}
+                    // addToNotes={this.addToNotes}
                     selected={this.state.selected}
-                    editProject={this.editProject}
-                    // addUpdatedToAll={this.addUpdatedToAll} 
+                    // editProject={this.editProject}
+                    addUpdatedToAll={this.addUpdatedToAll} 
                     handleDone={this.handleDone}
-                    deleteNote={this.deleteNote}/>
+                    // deleteNote={this.deleteNote}
+                    />
                     
                     </div>
                 }

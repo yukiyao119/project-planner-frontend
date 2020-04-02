@@ -4,18 +4,18 @@ import NoteForm from '../components/NoteForm'
 export default class NoteCard extends Component {
 
     render() {
-        console.log("NOTE CARD", this.props.selected)
-        const {selected} = this.props
-        // const {allNotesArr, filterProjectNotes, selected} = this.props
-        // const filteredNotes = filterProjectNotes(allNotesArr)
+        // console.log("NOTE CARD", this.props.selected)
+        // const {selected} = this.props
+        const {allNotesArr, filterProjectNotes} = this.props
+        const filteredNotes = filterProjectNotes(allNotesArr)
 
-        const noteItems = selected.notes.map(note => 
+        const noteItems = filteredNotes.map(note => 
         <React.Fragment key={note.id}>
             <p key={note.id} id={note.id} className="noteStyle"> 
                 {note.content}   
                 <button key={note.id} id={note.id}
                 className="ui mini icon button"
-                onClick={()=> {this.props.deleteNote(note)}}
+                onClick={()=> {this.props.handleDelete(note)}}
                 > <i aria-hidden="true" className="ui remove icon"></i>
                 </button>
             </p>

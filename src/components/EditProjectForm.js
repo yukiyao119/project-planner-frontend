@@ -31,15 +31,15 @@ export default class EditProjectForm extends Component {
           .then(res => res.json())
           .then(updatedProject => {
               console.log("updated", updatedProject)
-            //   this.props.addUpdatedToAll(updatedProject)
-            this.props.editProject(updatedProject)
+              this.props.addUpdatedToAll(updatedProject)
+            // this.props.editProject(updatedProject)
           })
 
-        // this.setState({
-        //     ...this.state, 
-        //     name: "",
-        //     details: ""
-        // })
+        this.setState({
+            ...this.state, 
+            name: "",
+            details: ""
+        })
 
     }
 
