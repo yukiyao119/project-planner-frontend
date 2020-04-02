@@ -5,6 +5,7 @@ import ProjectForm from '../components/ProjectForm';
 import DoneList from './DoneList';
 // import { log } from 'util';
 const heroku = "https://stormy-ocean-97302.herokuapp.com/"
+const localhost = "http://localhost:3000/"
 export default class BodyContainer extends Component {
 
     state ={
@@ -16,7 +17,7 @@ export default class BodyContainer extends Component {
 
     componentDidMount(){
 //         fetch("http://localhost:3000/projects")
-        fetch(`${heroku}projects`)
+        fetch(`${localhost}projects`)
         .then(res => res.json())
         .then( projectsData => {
             const completed = [...projectsData].filter(project => project.done === true)
@@ -62,7 +63,7 @@ export default class BodyContainer extends Component {
         })
 
         if (!projectsComplete.includes(project)) {
-            fetch(`${heroku}projects/${this.state.selected.id}`, {
+            fetch(`${localhost}projects/${this.state.selected.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
@@ -87,6 +88,21 @@ export default class BodyContainer extends Component {
     handleShowCard = (project) => {
         this.setState({
             selected: project
+        })
+    }
+
+    //ADD NOTES
+    addToNotes = (newNote) => {
+        const project = this.state.projectsArr.find ((projects) => {
+            return projects.id === newNote.project.id
+        })
+        const updateProject = {...project, notes: [...project.notes, newNote]}
+        const newProjectArr = this.state.projectsArr.map((project) => {
+            return project.id === updateProject.id ? updateProject: project
+        })
+        this.setState({
+            projectsArr: newProjectArr,
+            selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
         })
     }
 
@@ -135,6 +151,7 @@ export default class BodyContainer extends Component {
                     <div >
                     <ProjectCard 
                     // handleReverse={this.handleReverse}
+                    addToNotes={this.addToNotes}
                     selected={this.state.selected}
                     addUpdatedToAll={this.addUpdatedToAll}
                     handleDone={this.handleDone}/>
