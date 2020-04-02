@@ -107,6 +107,40 @@ export default class BodyContainer extends Component {
         })
     }
 
+    deleteNote = (noteObj) => {
+        fetch(`${localhost}notes/${noteObj.id}`, {
+            method: "DELETE",
+        })
+        .then(res => res.json())
+        .then( (deletedNote) => {
+            const remainingNotes = this.state.selected.notes.filter( (deletedNote) => {
+                return noteObj !== deletedNote
+            })
+            //find the project of the deleted note.
+            const project = this.state.projectsArr.find ((projectObj) => {
+                return deletedNote.project.id === projectObj.id
+            })
+
+            //filter the project notes to remove the deleted note
+            const filteredNotes = project.notes.filter( (removeNote) => {
+                return removeNote.id !== deletedNote.id
+            })
+
+            //update the project with new notes
+            const updatedProject = {...project, notes: filteredNotes}
+            
+            //create a new array of project with updated 
+            const newProjectsArr = this.state.projectsArr.map ( (project) => {
+                return project.id === updatedProject.id ? updatedProject : project
+            })
+
+            this.setState({
+                projectsArr: newProjectsArr,
+                selected: {...this.state.selected, notes: remainingNotes}
+            })
+        })
+    }
+
     
 
     render() {
@@ -155,7 +189,9 @@ export default class BodyContainer extends Component {
                     addToNotes={this.addToNotes}
                     selected={this.state.selected}
                     addUpdatedToAll={this.addUpdatedToAll}
-                    handleDone={this.handleDone}/>
+                    handleDone={this.handleDone}
+                    deleteNote={this.deleteNote}/>
+                    
                     </div>
                 }
                 </div>

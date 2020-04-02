@@ -89,6 +89,7 @@ export default class ProjectCard extends Component {
                             filterProjectNotes={this.filterProjectNotes}
                             selected={this.props.selected}
                             addToNotes={this.props.addToNotes}
+                            deleteNote={this.props.deleteNote}
                             />
                             </div>
                         </div>

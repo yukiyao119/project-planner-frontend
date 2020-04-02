@@ -19,7 +19,7 @@ export default class NoteForm extends Component {
     handleNoteSubmit = (event) => {
         event.preventDefault()
         // console.log('handling note submitting')
-        fetch('https://stormy-ocean-97302.herokuapp.com/notes', {
+        fetch( `http://localhost:3000/notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
