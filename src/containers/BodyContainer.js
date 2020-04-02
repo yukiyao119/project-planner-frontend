@@ -4,7 +4,7 @@ import ProjectList from './ProjectList';
 import ProjectForm from '../components/ProjectForm';
 import DoneList from './DoneList';
 // import { log } from 'util';
-
+const heroku = "https://stormy-ocean-97302.herokuapp.com/"
 export default class BodyContainer extends Component {
 
     state ={
@@ -16,7 +16,7 @@ export default class BodyContainer extends Component {
 
     componentDidMount(){
 //         fetch("http://localhost:3000/projects")
-        fetch("https://stormy-ocean-97302.herokuapp.com/projects")
+        fetch(`${heroku}projects`)
         .then(res => res.json())
         .then( projectsData => {
             const completed = [...projectsData].filter(project => project.done === true)
@@ -62,7 +62,7 @@ export default class BodyContainer extends Component {
         })
 
         if (!projectsComplete.includes(project)) {
-            fetch(`https://stormy-ocean-97302.herokuapp.com/projects/${this.state.selected.id}`, {
+            fetch(`${heroku}projects/${this.state.selected.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",
