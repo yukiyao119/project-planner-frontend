@@ -16,8 +16,8 @@ export default class BodyContainer extends Component {
     }
 
     componentDidMount(){
-//         fetch("http://localhost:3000/projects")
-        fetch(`${localhost}projects`)
+
+        fetch(`${heroku}projects`)
         .then(res => res.json())
         .then( projectsData => {
             const completed = [...projectsData].filter(project => project.done === true)
@@ -32,7 +32,6 @@ export default class BodyContainer extends Component {
     
     // CREATE A NEW PROJECT AND ADD IT TO ALL
     addToAll = (createdProject) => {
-        // console.log("adding");
         this.setState({
             projectsArr: [...this.state.projectsArr, createdProject]
         })
@@ -76,7 +75,7 @@ export default class BodyContainer extends Component {
         })
 
         if (!projectsComplete.includes(project)) {
-            fetch(`${localhost}projects/${this.state.selected.id}`, {
+            fetch(`${heroku}projects/${this.state.selected.id}`, {
                 method: "PATCH",
                 headers: {
                   "Content-Type": "application/json",

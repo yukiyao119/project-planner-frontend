@@ -12,7 +12,7 @@ export default class ProjectCard extends Component {
 
     handleDelete = (noteObj) => {
         // console.log("Deleting");
-        fetch(`${localhost}notes/${noteObj.id}`, {
+        fetch(`${heroku}notes/${noteObj.id}`, {
             method: 'DELETE'
         })
         .then(res => res.json())

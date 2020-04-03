@@ -18,7 +18,7 @@ export default class EditProjectForm extends Component {
         evt.preventDefault()
     
         const id = this.props.selected.id
-        fetch(`${localhost}projects/${id}`, {
+        fetch(`${heroku}projects/${id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json'
