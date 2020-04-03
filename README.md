@@ -16,15 +16,15 @@ Better than Trello is a project management tool that allows the user to manage a
 ## Features
 
 ### Creating, Reading, Updating, Deleting a Project
-    In order to create a new project, we set up a form where the user can enter project details, and upon submit, the details will be transferred over to the list of projects currently queued. The user is able to click on the specific project to review, edit, or add any notes specific to the project. Upon completion of the project, the specific project will be moved onto another list.
+In order to create a new project, we set up a form where the user can enter project details, and upon submit, the details will be transferred over to the list of projects currently queued. The user is able to click on the specific project to review, edit, or add any notes specific to the project. Upon completion of the project, the specific project will be moved onto another list.
 
 ![gifOfComplete](demo/PPcomplete.gif)
 
 ### Browse, Search, and Sort
-    These features were set up in order to maintain the scalibility of the app. Instead of browsing through the list of projects, users can enter certain keywords to search for a specific project that they are managing. Users can also sort their projects by name Ascending order.
+These features were set up in order to maintain the scalibility of the app. Instead of browsing through the list of projects, users can enter certain keywords to search for a specific project that they are managing. Users can also sort their projects by name Ascending order.
 
 ## Future Features
-    Some possible features in the feature upcoming would be to implement drag and drop upon completion of a project, and expand on the sorting feature either by date or priority.
+Some possible features in the feature upcoming would be to implement drag and drop upon completion of a project, and expand on the sorting feature either by date or priority.
 
 ## Credits
 This is a group project that made by me and my partner Brian Wong when I was in Flatiron school, so many thanks to the instructors, coaches and my partner in the program!
