@@ -1,19 +1,19 @@
-## Project Planner
+## Better Than Trello
 
-
+![gifOfHomePage](demo/pphome.gif)
 ## About
-Project planner is a project management tool that allows the user to manage and organize their projects. Given the time constraints of 2-3 days, we choose to 
+Better than Trello is a project management tool that allows the user to manage and organize their projects. We built Better than Trello over 2-3 days where we used Ruby on Rails for the back end, and React on the front end. It was built through 3 phrases where we designed the schema, utilized the React library for the virtual DOM, and implemented features to establish relationships between react components. 
+
+
 It is a project management tool that allows you to track your current projects. It allows you to browse, search, sort, create, edit current projects. As well as view the details, add and delete notes.
 
 ## Technologies
 
 * Frontend: React
 * Backend: Ruby on Rails, PostgreSQL
-* Technologies
 
 ## Features
 
-* 
 * In order to better identify a particular project the user can browse, search, sort
 
 ## Future Features
