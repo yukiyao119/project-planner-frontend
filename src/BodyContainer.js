@@ -67,23 +67,7 @@ export default class BodyContainer extends Component {
         }
     }
 
-    // //ADD NOTES
-    // addToNotes = (newNote) => {
-        
-    //     const project = this.state.projectsArr.find( (projects) => {
-    //         return projects.id === newNote.project.id
-    //     })
-
-    //     const updateProject = {...project, notes: [...project.notes, newNote]}
-       
-    //     const newProjectArr = this.state.projectsArr.map((project) => {
-    //         return project.id === updateProject.id ? updateProject : project
-    //     })
-    //     this.setState({
-    //         projectsArr: newProjectArr,
-    //         selected: {...this.state.selected, notes: [...this.state.selected.notes, newNote]}
-    //     })
-    // }
+    
 
     // deleteNote = (noteObj) => {
     //     fetch(`${heroku}/notes/${noteObj.id}`, {
