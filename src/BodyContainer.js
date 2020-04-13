@@ -69,42 +69,7 @@ export default class BodyContainer extends Component {
 
     
 
-    // deleteNote = (noteObj) => {
-    //     fetch(`${heroku}/notes/${noteObj.id}`, {
-    //         method: "DELETE",
-    //     })
-    //     .then(res => res.json())
-    //     .then( (deletedNote) => {
-            
-    //         const remainingNotes = this.state.selected.notes.filter( deletedNote => {
-    //             return noteObj !== deletedNote
-    //         })
-
-
-    //         const project = this.state.projectsArr.find( (projectObj) => {
-    //             return  deletedNote.project.id === projectObj.id
-    //         } )
-    //         //find the project of the deleted note. project.id === project id
-
-    //         const fitleredNotes = project.notes.filter( (removeNote) => {
-    //             return removeNote.id !== deletedNote.id
-    //         })
-    //         //filter the project notes to remove the deleted note
-    //         const updatedProject = {...project, notes: fitleredNotes}
-    //         //make a copy of the updated project
-    //         const newProjectsArr = this.state.projectsArr.map( (project) => {
-    //             return project.id === updatedProject.id ? updatedProject : project
-    //         })
-    //         // create a new array of projects with updated projects
-
-    //         this.setState({
-    //             projectsArr: newProjectsArr,
-    //             selected: {...this.state.selected, notes: remainingNotes}
-    //         })
-    //     }
-    //     )
-    // }
-    
+   
    
     
     
@@ -142,7 +107,7 @@ export default class BodyContainer extends Component {
                                     <ProjectCard selected={this.state.selected}
                                                 editProject={this.editProject} 
                                                 handleDone={this.handleDone}
-                                                // addToNotes={this.addToNotes}
+                                            
                                                 // deleteNote={this.deleteNote}
                                                 />
                                     

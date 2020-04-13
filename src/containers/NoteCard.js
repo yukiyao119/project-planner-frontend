@@ -4,8 +4,7 @@ import NoteForm from '../components/NoteForm'
 export default class NoteCard extends Component {
 
     render() {
-        // console.log("NOTE CARD", this.props.selected)
-        // const {selected} = this.props
+        
         const {allNotesArr, filterProjectNotes} = this.props
         const filteredNotes = filterProjectNotes(allNotesArr)
 
@@ -33,7 +32,7 @@ export default class NoteCard extends Component {
                 </ol>
 
                 <NoteForm 
-                addToNotes={this.props.addToNotes}
+                
                 addToAllNotes={this.props.addToAllNotes}
                 selected={this.props.selected}
                 />

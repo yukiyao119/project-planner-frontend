@@ -34,7 +34,7 @@ export default class NoteForm extends Component {
             .then(res => res.json())
             .then(createdNote => {
                 this.props.addToAllNotes(createdNote)
-                // this.props.addToNotes(createdNote)
+                
             })
 
         this.setState({

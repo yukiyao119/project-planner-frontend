@@ -89,8 +89,8 @@ export default class ProjectCard extends Component {
                             allNotesArr={this.state.allNotesArr}
                             filterProjectNotes={this.filterProjectNotes}
                             selected={this.props.selected}
-                            // addToNotes={this.props.addToNotes}
-                            // deleteNote={this.props.deleteNote}
+                            
+                        
                             />
                             </div>
                         </div>
@@ -101,7 +101,7 @@ export default class ProjectCard extends Component {
                             // handleReverse={this.props.handleReverse}
                             selected={this.props.selected}
                             addUpdatedToAll={this.props.addUpdatedToAll}
-                            // editProject={this.props.editProject}
+                            editProject={this.props.editProject}
                             />
                             </div>
                         </div>
